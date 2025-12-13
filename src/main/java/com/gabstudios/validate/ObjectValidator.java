@@ -118,6 +118,7 @@ public abstract class ObjectValidator<C> implements Validator
 	 * 
 	 * @see com.gabstudios.gabvalidate.Validator#validate()
 	 */
+    @Override
 	public boolean validate() {
         boolean isValid = validateNotNull();
         isValid &= validateEquals();

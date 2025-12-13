@@ -272,10 +272,7 @@ public final class ArrayValidator extends ObjectValidator<Object[]>
             if (this._isValidationExceptionThrownOnFail && !isValid)
             {
             	ObjectValidator
-                        .throwValidateException("The value must be greater than or equal to the min value."
-                + " (value = '" + this._value
-                + "' min value = '"
-                + this._minLength + "').");
+                        .throwValidateException("The value must be greater than or equal to the min value (value = '" + Arrays.toString(this._value) + "' min value = '" + this._minLength + "').");
             }
         }
         return(isValid);
@@ -294,11 +291,7 @@ public final class ArrayValidator extends ObjectValidator<Object[]>
             if (this._isValidationExceptionThrownOnFail && !isValid)
             {
             	ObjectValidator
-                        .throwValidateException("The value must be less than or equal to the max value."
-                + " (value = '"
-                + this._value
-                + "' min value = '"
-                + this._minLength + "').");
+                        .throwValidateException("The value must be less than or equal to the max value (value = '" + Arrays.toString(this._value) + "' min value = '" + this._minLength + "').");
             }
         }
         return(isValid);
@@ -319,11 +312,7 @@ public final class ArrayValidator extends ObjectValidator<Object[]>
             if (this._isValidationExceptionThrownOnFail && !isValid )
             {
                 ObjectValidator
-                        .throwValidateException("The value does not equal the expected value."
-                + " (value = '"
-                + this._value
-                + "' expected value = '"
-                + this._equalsValue + "').");
+                        .throwValidateException("The value does not equal the expected value (value = '" + Arrays.toString(this._value) + "' expected value = '" + Arrays.toString(this._equalsValue) + "').");
             }
         }
         return(isValid);
