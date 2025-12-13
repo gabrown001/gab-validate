@@ -51,7 +51,7 @@ public final class ByteValidator extends NumberValidator<Byte>
         super( value, Byte.MIN_VALUE, Byte.MAX_VALUE, returnNullByte());
     }
 
-   private static final byte returnNullByte()
+   private static byte returnNullByte()
    {
        // to resolve an boxing issue reported by sonarcloud
        final Integer intNum = Integer.valueOf(0);
