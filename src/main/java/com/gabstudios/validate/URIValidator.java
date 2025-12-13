@@ -1,18 +1,22 @@
-/*****************************************************************************************
+ /*****************************************************************************************
  *
- * Copyright 2022 Gregory Brown. All Rights Reserved.
+ * Copyright 2022-2025 Gregory Brown. All Rights Reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
- * specific language governing permissions and limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  *
  *****************************************************************************************
  */
+
 
 package com.gabstudios.validate;
 
@@ -25,6 +29,23 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This is a URI validator. After this class is created, call the testXXXX()
+ * methods to perform tests when the validate() method is called.
+ * 
+ * Validate.defineURI(URI).testMatchAllowDomain('my.domain.com').validate();
+ *
+ * If the throwValidationExceptionOnFail() method has been called and if the
+ * validate fails then a ValidateException will be thrown.
+ * 
+ * Validate.defineURI(URI).testMatchAllowDomain('my.domain.com')
+ * .throwValidationExceptionOnFail().validate();
+ *
+ * If no test method is called, validate() returns a TRUE.
+ *
+ * @author Gregory Brown (sysdevone)
+ *
+ */
 public final class URIValidator extends StringValidator {
 
 	/*
@@ -47,24 +68,10 @@ public final class URIValidator extends StringValidator {
 	private URI _uri;
 	private InetAddress _address;
 
-	/**
-	 * Protected constructor. Use Validate static method to create validator.
-	 *
-	 * @param value
-	 *              The value that will be validated. This value can be null or
-	 *              empty.
-	 * @throws MalformedURLException
-	 * @throws UnknownHostException
-	 * @throws URISyntaxException 
-	 */
-	protected URIValidator(final String value) throws MalformedURLException, UnknownHostException, URISyntaxException {
-		this(new URI(value));
-	}
 
-	protected URIValidator(final URI value) throws UnknownHostException {
+	protected URIValidator(final URI value) {
 		super(value.toString());
 		this._uri = value;
-		this._address = InetAddress.getByName(value.getHost());
 	}
 
 	// allow list
@@ -162,28 +169,48 @@ public final class URIValidator extends StringValidator {
 	public boolean validate() {
 		// validate allow list
 		boolean isValid = super.validate();
-		// System.out.println("start result: " + isValid + " : " + this._url + " : " +
-		// this._address);
-		if (this._isTestMatchAllowList) {
-			isValid = validateAllowList();
-			// System.out.println("allow result: " + isValid);
-		}
 
-		// allowed protocols
-		isValid &= validateAllowedProtocols();
-		// System.out.println("protocol result: " + isValid);
+		isValid = (!isValid ? false : validateAddress());
+		if (isValid) {
+			// System.out.println("start result: " + isValid + " : " + this._url + " : " +
+			// this._address);
+			if (this._isTestMatchAllowList) {
+				isValid = validateAllowList();
+				// System.out.println("allow result: " + isValid);
+			}
 
-		// allowed ports
-		isValid &= validateAllowedPorts();
-		// System.out.println("protocol result: " + isValid);
+			// allowed protocols
+			isValid &= validateAllowedProtocols();
+			// System.out.println("protocol result: " + isValid);
 
-		// validate deny list
-		if (this._isTestMatchDenyList) {
-			isValid &= validateDenyList();
-			// System.out.println("deny result: " + isValid);
+			// allowed ports
+			isValid &= validateAllowedPorts();
+			// System.out.println("protocol result: " + isValid);
+
+			// validate deny list
+			if (this._isTestMatchDenyList) {
+				isValid &= validateDenyList();
+				// System.out.println("deny result: " + isValid);
+			}
+
 		}
 
 		// System.out.println("final result: " + isValid);
+		return (isValid);
+	}
+
+	protected boolean validateAddress() {
+		boolean isValid;
+		try {
+			this._address = InetAddress.getByName(this._uri.getHost());
+			isValid = true;
+		} catch (UnknownHostException ex) {
+			isValid = false;
+			if (this._isValidationExceptionThrownOnFail && !isValid) {
+				ObjectValidator.throwValidateException(
+						"The address (value = " + this._address + ") is an unknown host (value = '" + this._uri.getHost() + "').");
+			}
+		}
 		return (isValid);
 	}
 

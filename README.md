@@ -1,6 +1,4 @@
 
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=gab-studios_gab-validate&metric=security_rating)](https://sonarcloud.io/dashboard?id=gab-studios_gab-validate)
-
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/gab-studios/gab-validate/badge)](https://api.securityscorecards.dev/projects/github.com/gab-studios/gab-validate)
 
 GAB-Validate
