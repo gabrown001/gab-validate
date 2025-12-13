@@ -31,7 +31,7 @@ package com.gabstudios.validate;
  *      Validate.defineFloat(float).testEquals(float)
  *          .throwValidationExceptionOnFail().validate();
  *
- * If no test method is called, validate() returns a false.
+ * If no test method is called, validate() returns a TRUE.
  *
  * @author Gregory Brown (sysdevone)
  *

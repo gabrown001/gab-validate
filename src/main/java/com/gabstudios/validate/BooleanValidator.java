@@ -31,7 +31,7 @@ package com.gabstudios.validate;
  *      Validate.defineBoolean(myObject==null).testEquals(otherObject != null)
  *          .throwValidationExceptionOnFail().validate();
  *
- * If no test method is called, validate() returns a false.
+ * If no test method is called, validate() returns a TRUE.
  *
  * @author Gregory Brown (sysdevone)
  *
@@ -104,6 +104,10 @@ public final class BooleanValidator extends ObjectValidator<Boolean>
         return ( isValid );
     }
 
+    /*
+     * Used as part of the validation process to test if a boolean is FALSE.
+     * @return A <code>boolean</code> value of true it is valid or false the validate failed.
+     */
     protected boolean validateFalse()
     {
         boolean isValid = true;
@@ -120,6 +124,10 @@ public final class BooleanValidator extends ObjectValidator<Boolean>
         return(isValid);
     }
 
+    /*
+     * Used as part of the validation process to test if a boolean is TRUE.
+     * @return A <code>boolean</code> value of true it is valid or false the validate failed.
+     */
     protected boolean validateTrue()
     {
         boolean isValid = true;

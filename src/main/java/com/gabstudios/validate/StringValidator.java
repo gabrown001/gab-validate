@@ -33,12 +33,12 @@ import java.util.regex.Pattern;
  * Validate.defineString(String).testEquals(String)
  * .throwValidationExceptionOnFail().validate();
  *
- * If no test method is called, validate() returns a false.
+ * If no test method is called, validate() returns a TRUE.
  *
  * @author Gregory Brown (sysdevone)
  *
  */
-public final class StringValidator extends ObjectValidator<String>
+public class StringValidator extends ObjectValidator<String>
 {
     
     /*

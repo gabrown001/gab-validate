@@ -45,7 +45,7 @@ public class ValidateTest
         {
             StringValidator stringValidator = Validate
                     .defineString("HelloWorld");
-            Assert.assertTrue(stringValidator != null);
+            Assert.assertNotNull(stringValidator);
         }
         catch (final Exception e)
         {
@@ -64,7 +64,7 @@ public class ValidateTest
         try
         {
             BooleanValidator booleanValidator = Validate.defineBoolean(true);
-            Assert.assertTrue(booleanValidator != null);
+            Assert.assertNotNull(booleanValidator);
         }
         catch (final Exception e)
         {
@@ -83,7 +83,7 @@ public class ValidateTest
         try
         {
             ByteValidator byteValidator = Validate.defineByte((byte) 0xa);
-            Assert.assertTrue(byteValidator != null);
+            Assert.assertNotNull(byteValidator);
         }
         catch (final Exception e)
         {
@@ -102,7 +102,7 @@ public class ValidateTest
         try
         {
             CharValidator charValidator = Validate.defineChar('C');
-            Assert.assertTrue(charValidator != null);
+            Assert.assertNotNull(charValidator);
         }
         catch (final Exception e)
         {
@@ -121,7 +121,7 @@ public class ValidateTest
         try
         {
             DoubleValidator doubleValidator = Validate.defineDouble(1.5);
-            Assert.assertTrue(doubleValidator != null);
+            Assert.assertNotNull(doubleValidator);
         }
         catch (final Exception e)
         {
@@ -140,7 +140,7 @@ public class ValidateTest
         try
         {
             FloatValidator floatValidator = Validate.defineFloat(1.0F);
-            Assert.assertTrue(floatValidator != null);
+            Assert.assertNotNull(floatValidator);
         }
         catch (final Exception e)
         {
@@ -159,7 +159,7 @@ public class ValidateTest
         try
         {
             IntegerValidator intValidator = Validate.defineInteger(55);
-            Assert.assertTrue(intValidator != null);
+            Assert.assertNotNull(intValidator);
         }
         catch (final Exception e)
         {
@@ -178,7 +178,7 @@ public class ValidateTest
         try
         {
             ShortValidator shortValidator = Validate.defineShort((short) 100);
-            Assert.assertTrue(shortValidator != null);
+            Assert.assertNotNull(shortValidator);
         }
         catch (final Exception e)
         {
@@ -197,7 +197,7 @@ public class ValidateTest
         try
         {
             LongValidator longValidator = Validate.defineLong(100L);
-            Assert.assertTrue(longValidator != null);
+            Assert.assertNotNull(longValidator);
         }
         catch (final Exception e)
         {

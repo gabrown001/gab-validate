@@ -139,4 +139,11 @@ public class ArrayValidatorNegativeTest {
 
     }
 
+    @Test
+    public void testEqualsNullSource() {
+        String[] strArray2 = { "Hello" };
+        ArrayValidator validator = Validate.defineArray(null).testEquals(strArray2).throwValidationExceptionOnFail();
+        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+    }
+
 }

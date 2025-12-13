@@ -31,7 +31,7 @@ package com.gabstudios.validate;
  *      Validate.defineByte(byte).testEquals(expectedByte)
  *          .throwValidationExceptionOnFail().validate();
  *
- * If no test method is called, validate() returns a false.
+ * If no test method is called, validate() returns a TRUE.
  *
  * @author Gregory Brown (sysdevone)
  *

@@ -19,6 +19,10 @@
 
 package com.gabstudios.validate;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.UnknownHostException;
+
 /**
  * The purpose of this class is to help validate arguments. 
  * 
@@ -176,5 +180,21 @@ public class Validate
     public static final ArrayValidator defineArray(final Object[] value)
     {
         return (new ArrayValidator(value));
+    }
+
+
+    /**
+     * This method defines a URL validator. Each call creates a new validator.
+     *
+     * @param value
+     *            The String value to validate.
+     * @return A <code>URLValidator</code> instance.
+     * @throws UnknownHostException
+     * @throws MalformedURLException
+     * @throws URISyntaxException 
+     */
+    public static final URIValidator defineURL(final String value) throws MalformedURLException, UnknownHostException, URISyntaxException
+    {
+        return (new URIValidator(value));
     }
 }

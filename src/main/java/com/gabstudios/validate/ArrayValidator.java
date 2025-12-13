@@ -34,7 +34,7 @@ import java.util.Arrays;
  * Validate.defineString(String).testEquals(String)
  * .throwValidationExceptionOnFail().validate();
  *
- * If no test method is called, validate() returns a false.
+ * If no test method is called, validate() returns a TRUE.
  *
  * @author Gregory Brown (sysdevone)
  *
@@ -118,7 +118,11 @@ public final class ArrayValidator extends ObjectValidator<Object[]>
         
         if (equalsValue != null)
         {
-            this._equalsValue = Arrays.copyOf(equalsValue, this._value.length);
+            this._equalsValue = Arrays.copyOf(equalsValue, equalsValue.length);
+        }
+        else
+        {
+            this._equalsValue = null;
         }
         
         return (this);
@@ -235,6 +239,10 @@ public final class ArrayValidator extends ObjectValidator<Object[]>
 
     }
 
+    /*
+     * Used as part of the validation process to test that an array is not empty.
+     * @return A <code>boolean</code> value of true it is valid or false the validate failed.
+     */
     protected boolean validateNotEmpty()
     {
         boolean isValid = true;
