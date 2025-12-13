@@ -1,6 +1,6 @@
 /*****************************************************************************************
  *
- * Copyright 2014 Gregory Brown. All Rights Reserved.
+ * Copyright 2015-2025 Gregory Brown. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,11 +17,11 @@
  *****************************************************************************************
  */
 
+ 
 package com.gabstudios.validate;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.UnknownHostException;
+import java.net.URI;
+
 
 /**
  * The purpose of this class is to help validate arguments. 
@@ -182,19 +182,16 @@ public class Validate
         return (new ArrayValidator(value));
     }
 
-
     /**
-     * This method defines a URL validator. Each call creates a new validator.
+     * This method defines a URI validator. Each call creates a new validator.
      *
      * @param value
-     *            The String value to validate.
-     * @return A <code>URLValidator</code> instance.
-     * @throws UnknownHostException
-     * @throws MalformedURLException
-     * @throws URISyntaxException 
+     *            The URI value to validate.
+     * @return A <code>URIValidator</code> instance.
      */
-    public static final URIValidator defineURL(final String value) throws MalformedURLException, UnknownHostException, URISyntaxException
+    public static final URIValidator defineURI(final URI value)
     {
         return (new URIValidator(value));
     }
+
 }
