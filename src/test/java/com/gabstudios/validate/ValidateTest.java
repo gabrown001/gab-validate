@@ -18,11 +18,7 @@
  */
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.*;
 
 /**
  * Basic tests for the Validator class.
@@ -32,7 +28,15 @@ import org.junit.Test;
  */
 public class ValidateTest
 {
-    
+
+    @BeforeEach
+    public void setUp() {
+    }
+
+    @AfterEach
+    public void tearDown() {
+    }
+
     /*
      * Tests the defineString method.
      */
@@ -44,11 +48,11 @@ public class ValidateTest
         {
             StringValidator stringValidator = Validate
                     .defineString("HelloWorld");
-            Assert.assertNotNull(stringValidator);
+            Assertions.assertNotNull(stringValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -63,11 +67,11 @@ public class ValidateTest
         try
         {
             BooleanValidator booleanValidator = Validate.defineBoolean(true);
-            Assert.assertNotNull(booleanValidator);
+            Assertions.assertNotNull(booleanValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -82,11 +86,11 @@ public class ValidateTest
         try
         {
             ByteValidator byteValidator = Validate.defineByte((byte) 0xa);
-            Assert.assertNotNull(byteValidator);
+            Assertions.assertNotNull(byteValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -101,11 +105,11 @@ public class ValidateTest
         try
         {
             CharValidator charValidator = Validate.defineChar('C');
-            Assert.assertNotNull(charValidator);
+            Assertions.assertNotNull(charValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -120,11 +124,11 @@ public class ValidateTest
         try
         {
             DoubleValidator doubleValidator = Validate.defineDouble(1.5);
-            Assert.assertNotNull(doubleValidator);
+            Assertions.assertNotNull(doubleValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -139,11 +143,11 @@ public class ValidateTest
         try
         {
             FloatValidator floatValidator = Validate.defineFloat(1.0F);
-            Assert.assertNotNull(floatValidator);
+            Assertions.assertNotNull(floatValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -158,11 +162,11 @@ public class ValidateTest
         try
         {
             IntegerValidator intValidator = Validate.defineInteger(55);
-            Assert.assertNotNull(intValidator);
+            Assertions.assertNotNull(intValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -177,11 +181,11 @@ public class ValidateTest
         try
         {
             ShortValidator shortValidator = Validate.defineShort((short) 100);
-            Assert.assertNotNull(shortValidator);
+            Assertions.assertNotNull(shortValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -196,11 +200,11 @@ public class ValidateTest
         try
         {
             LongValidator longValidator = Validate.defineLong(100L);
-            Assert.assertNotNull(longValidator);
+            Assertions.assertNotNull(longValidator);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -215,11 +219,11 @@ public class ValidateTest
     //     try
     //     {
     //         ObjectValidator<?> objectValidator = Validate.defineObject(100L);
-    //         Assert.assertTrue(objectValidator != null);
+    //         Assertions.assertTrue(objectValidator != null);
     //     }
     //     catch (final Exception e)
     //     {
-    //         Assert.fail(e.toString());
+    //         Assertions.fail(e.toString());
     //     }
         
     // }
@@ -234,25 +238,13 @@ public class ValidateTest
     //     try
     //     {
     //         ObjectValidator<?> objectValidator = Validate.defineObject(object);
-    //         Assert.assertTrue(objectValidator != null);
+    //         Assertions.assertTrue(objectValidator != null);
     //     }
     //     catch (final Exception e)
     //     {
-    //         Assert.fail(e.toString());
+    //         Assertions.fail(e.toString());
     //     }
         
     // }
-    
-    @Before
-    public void setUp()
-    {
-        //
-    }
-    
-    @After
-    public void tearDown()
-    {
-        
-    }
     
 }

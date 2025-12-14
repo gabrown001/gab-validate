@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 
 /**
@@ -33,16 +30,12 @@ import org.junit.Test;
  */
 public class LongValidatorTest
 {
-    @Before
-    public void setUp()
-    {
-        //
+    @BeforeEach
+    public void setUp() {
     }
-    
-    @After
-    public void tearDown()
-    {
-        
+
+    @AfterEach
+    public void tearDown() {
     }
     
     @Test
@@ -52,11 +45,11 @@ public class LongValidatorTest
         try
         {
             String desc = Validate.defineLong(x).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -68,11 +61,11 @@ public class LongValidatorTest
         try
         {
             long retVal = Validate.defineLong(x).getValue();
-            Assert.assertEquals(x, retVal);
+            Assertions.assertEquals(x, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -85,11 +78,11 @@ public class LongValidatorTest
         try
         {
             boolean retVal = Validate.defineLong(x).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -101,11 +94,11 @@ public class LongValidatorTest
         try
         {
             boolean retVal = Validate.defineLong(x).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     } 
@@ -121,11 +114,11 @@ public class LongValidatorTest
             boolean retVal = Validate.defineLong(x).testMaxValue(max)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -141,11 +134,11 @@ public class LongValidatorTest
             boolean retVal = Validate.defineLong(x).testMinValue(min)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -162,11 +155,11 @@ public class LongValidatorTest
             boolean retVal = Validate.defineLong(x).testEquals(y)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -177,11 +170,11 @@ public class LongValidatorTest
         try {
             long x = 0L;
             boolean retVal = Validate.defineLong(x).isZeroValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -192,11 +185,11 @@ public class LongValidatorTest
         try {
             long x = 5L;
             boolean retVal = Validate.defineLong(x).isPositiveValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -207,11 +200,11 @@ public class LongValidatorTest
         try {
             long x = -5L;
             boolean retVal = Validate.defineLong(x).isNegativeValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }

@@ -18,10 +18,7 @@
  */
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 
 /**
@@ -32,16 +29,12 @@ import org.junit.Test;
  */
 public class ArrayValidatorTest
 {
-    @Before
-    public void setUp()
-    {
-        //
+    @BeforeEach
+    public void setUp() {
     }
 
-    @After
-    public void tearDown()
-    {
-
+    @AfterEach
+    public void tearDown() {
     }
     
     @Test
@@ -51,11 +44,11 @@ public class ArrayValidatorTest
         try
         {
             String desc = Validate.defineArray(strArray1).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -67,11 +60,11 @@ public class ArrayValidatorTest
         try
         {
             Object[] retArray = Validate.defineArray(strArray1).getValue();
-            Assert.assertArrayEquals(strArray1, retArray);
+            Assertions.assertArrayEquals(strArray1, retArray);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -84,11 +77,11 @@ public class ArrayValidatorTest
         {
             String[] strArray1 = { "Hello", "World", "is", "awesome" };
             boolean retVal = Validate.defineArray(strArray1).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -101,11 +94,11 @@ public class ArrayValidatorTest
         try
         {
             boolean retVal = Validate.defineArray(strArray1).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -120,11 +113,11 @@ public class ArrayValidatorTest
             boolean retVal = Validate.defineArray(strArray1).testMaxLength(4)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -138,11 +131,11 @@ public class ArrayValidatorTest
             boolean retVal = Validate.defineArray(strArray1).testMinLength(4)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -157,11 +150,11 @@ public class ArrayValidatorTest
             boolean retVal = Validate.defineArray(strArray1).testNotNullEmpty()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -177,11 +170,11 @@ public class ArrayValidatorTest
             boolean retVal = Validate.defineArray(strArray1).testNotNull()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -196,11 +189,11 @@ public class ArrayValidatorTest
             boolean retVal = Validate.defineArray(strArray1).testEquals(strArray2)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }

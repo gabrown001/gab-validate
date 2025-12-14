@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;;
 
 /**
  * A negative test class for the StringValidator
@@ -31,34 +28,32 @@ import org.junit.Test;
  *
  */
 public class StringValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
     public void testMaxLength() {
         StringValidator validator = Validate.defineString("HelloWorld").testMaxLength(5)
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
     @Test
     public void testMaxLengthLessThanZero() {
-        Assert.assertThrows(IllegalArgumentException.class,
+        Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validate.defineString("HelloWorld").testMaxLength(-1));
 
     }
 
     @Test
     public void testMaxLengthGreaterThanMin() {
-        Assert.assertThrows(IllegalArgumentException.class,
+        Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validate.defineString("HelloWorld").testMinLength(11).testMaxLength(5));
 
     }
@@ -67,21 +62,21 @@ public class StringValidatorNegativeTest {
     public void testMinLength() {
         StringValidator validator = Validate.defineString("HelloWorld").testMinLength(11)
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
     @Test
     public void testMinLengthLessThanZero() {
 
-        Assert.assertThrows(IllegalArgumentException.class,
+        Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validate.defineString("HelloWorld").testMinLength(-10));
 
     }
 
     @Test
     public void testMinLengthLessThanMax() {
-        Assert.assertThrows(IllegalArgumentException.class,
+        Assertions.assertThrows(IllegalArgumentException.class,
                 () -> Validate.defineString("HelloWorld").testMaxLength(5).testMinLength(11));
 
     }
@@ -89,14 +84,14 @@ public class StringValidatorNegativeTest {
     @Test
     public void testNotNullEmpty() {
         StringValidator validator = Validate.defineString("").testNotNullEmpty().throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
     @Test
     public void testNotNull() {
         StringValidator validator = Validate.defineString(null).testNotNull().throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
@@ -104,7 +99,7 @@ public class StringValidatorNegativeTest {
     public void testEquals() {
         StringValidator validator = Validate.defineString("HelloWorld").testEquals("1HelloWorld1")
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
@@ -112,7 +107,7 @@ public class StringValidatorNegativeTest {
     public void testEqualsNoCase() {
         StringValidator validator = Validate.defineString("HelloWorld").testEqualsNoCase("1hELLOwORLD1")
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
@@ -120,7 +115,7 @@ public class StringValidatorNegativeTest {
     public void testMatch() {
         StringValidator validator = Validate.defineString("HelloWorld").testMatch("HelloWorld1")
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 
@@ -128,7 +123,7 @@ public class StringValidatorNegativeTest {
     public void testMatch2() {
         StringValidator validator = Validate.defineString("HelloWorld").testMatch("[A-Z]*")
                 .throwValidationExceptionOnFail();
-        Assert.assertThrows(ValidateException.class, () -> validator.validate());
+        Assertions.assertThrows(ValidateException.class, () -> validator.validate());
 
     }
 

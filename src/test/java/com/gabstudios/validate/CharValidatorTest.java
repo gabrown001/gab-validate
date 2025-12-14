@@ -19,11 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the  CharValidator
@@ -33,16 +29,12 @@ import org.junit.Test;
  */
 public class CharValidatorTest
 {
-    @Before
-    public void setUp()
-    {
-        //
+    @BeforeEach
+    public void setUp() {
     }
-    
-    @After
-    public void tearDown()
-    {
-        
+
+    @AfterEach
+    public void tearDown() {
     }
     
     @Test
@@ -52,11 +44,11 @@ public class CharValidatorTest
         try
         {
             String desc = Validate.defineChar(x).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -68,11 +60,11 @@ public class CharValidatorTest
         try
         {
             char retVal = Validate.defineChar(x).getValue();
-            Assert.assertEquals(x, retVal);
+            Assertions.assertEquals(x, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -85,11 +77,11 @@ public class CharValidatorTest
         {
             char x = '5';
             boolean retVal = Validate.defineChar(x).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -103,11 +95,11 @@ public class CharValidatorTest
         {
             char x = '5';
             boolean retVal = Validate.defineChar(x).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -120,11 +112,11 @@ public class CharValidatorTest
         {
             char x = '5';
             boolean retVal = Validate.defineChar(x).testNotEmpty().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -141,11 +133,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testMaxValue(max)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -161,11 +153,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testMinValue(min)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -182,11 +174,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testEquals(y)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -201,11 +193,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testIsDigit()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -221,11 +213,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testIsLowerCase()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -240,11 +232,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testIsUpperCase()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -259,11 +251,11 @@ public class CharValidatorTest
             boolean retVal = Validate.defineChar(x).testIsWhitespace()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }

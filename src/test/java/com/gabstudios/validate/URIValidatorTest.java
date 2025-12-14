@@ -24,11 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.*;
 /**
  * A test class for the URIValidator.
  * This class contains unit tests to validate the functionality of the URIValidator,
@@ -43,17 +39,13 @@ public class URIValidatorTest
 	private static final String HTTP_LOCALHOST = "http://localhost";
 	private static final String HTTPS_LOCALHOST_NON_STANDARD_PORT = "https://localhost:8443";
 
-	@Before
-	public void setUp()
-	{
-		//
-	}
+    @BeforeEach
+    public void setUp() {
+    }
 
-	@After
-	public void tearDown()
-	{
-		//
-	}
+    @AfterEach
+    public void tearDown() {
+    }
 
 	@Test
 	public void testAllowList()
@@ -64,22 +56,22 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			Validate.defineURI(uri).testMatchAllowDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assert.assertTrue(true);
+			Assertions.assertTrue(true);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (MalformedURLException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (UnknownHostException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		} 
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 
 	}
@@ -93,22 +85,22 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assert.fail("Expected validation to fail when the URL matches the deny list.");
+			Assertions.fail("Expected validation to fail when the URL matches the deny list.");
 		}
 		catch (final ValidateException e)
 		{
-			Assert.assertTrue(true);
+			Assertions.assertTrue(true);
 		}
 		catch (MalformedURLException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (UnknownHostException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		} 
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -121,22 +113,22 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assert.fail("Expected validation to fail when the URL matches the deny list.");
+			Assertions.fail("Expected validation to fail when the URL matches the deny list.");
 		}
 		catch (final ValidateException e)
 		{
-			Assert.assertTrue(true);
+			Assertions.assertTrue(true);
 		}
 		catch (MalformedURLException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (UnknownHostException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		} 
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -149,14 +141,14 @@ public class URIValidatorTest
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).testEquals(urlString).throwValidationExceptionOnFail()
 			        .validate();
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 
 	}
@@ -172,14 +164,14 @@ public class URIValidatorTest
 			boolean retVal = Validate.defineURI(uri).testMaxLength(urlString.length()).throwValidationExceptionOnFail()
 			        .validate();
 
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		} 
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 
 	}
@@ -195,14 +187,14 @@ public class URIValidatorTest
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).testMinLength(8).throwValidationExceptionOnFail().validate();
 
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 
 	}
@@ -219,14 +211,14 @@ public class URIValidatorTest
 			boolean retVal = Validate.defineURI(uri).testNotNullEmpty().throwValidationExceptionOnFail()
 			        .validate();
 
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -242,14 +234,14 @@ public class URIValidatorTest
 			boolean retVal = Validate.defineURI(uri).testNotNull().throwValidationExceptionOnFail()
 			        .validate();
 
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -264,35 +256,34 @@ public class URIValidatorTest
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail().validate();
 
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
 	@Test
 	public void testAllowedProtocolsFails()
 	{
-
 		String urlString = HTTP_LOCALHOST;
-
 		try
 		{
-			URI uri = new URI (urlString);
+			URI uri = new URI(urlString);
 			boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail().validate();
-			Assert.fail("Expected protocol restriction to fail validation.");
+			// Corrected: boolean first, then message
+			Assertions.fail("Expected protocol restriction to fail validation.");
 		}
 		catch (final ValidateException e)
 		{
-			Assert.assertTrue(true);
+			Assertions.assertTrue(true);
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -306,15 +297,14 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
-
-			Assert.assertTrue(retVal);
+			Assertions.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
 		{
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 
@@ -328,14 +318,14 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
-			Assert.fail("Expected validation to fail for mismatched port.");
+			Assertions.fail("Expected validation to fail for mismatched port.");
 		}
 		catch (final ValidateException e)
 		{
-			Assert.assertTrue(true);
+			Assertions.assertTrue(true);
 		}
 		catch (URISyntaxException e) {
-			Assert.fail(e.toString());
+			Assertions.fail(e.toString());
 		}
 	}
 

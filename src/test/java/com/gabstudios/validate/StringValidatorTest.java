@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 
 /**
@@ -33,16 +30,12 @@ import org.junit.Test;
  */
 public class StringValidatorTest
 {
-    @Before
-    public void setUp()
-    {
-        //
+    @BeforeEach
+    public void setUp() {
     }
 
-    @After
-    public void tearDown()
-    {
-
+    @AfterEach
+    public void tearDown() {
     }
     
     @Test
@@ -52,11 +45,11 @@ public class StringValidatorTest
         try
         {
             String desc = Validate.defineString(x).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -68,11 +61,11 @@ public class StringValidatorTest
         try
         {
             String retVal = (String) Validate.defineString(x).getValue();
-            Assert.assertEquals(x, retVal);
+            Assertions.assertEquals(x, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -85,11 +78,11 @@ public class StringValidatorTest
         try
         {
             boolean retVal = Validate.defineString(x).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -101,11 +94,11 @@ public class StringValidatorTest
         try
         {
             boolean retVal = Validate.defineString(x).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }  
@@ -119,11 +112,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testMaxLength(10)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -137,11 +130,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testMinLength(8)
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -155,11 +148,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testNotNullEmpty()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -174,11 +167,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testNotNull()
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -194,11 +187,11 @@ public class StringValidatorTest
             System.err.println( stringValidator.toString() );
             boolean retVal = stringValidator.validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
     }
     
@@ -214,11 +207,11 @@ public class StringValidatorTest
 			System.err.println( stringValidator.toString() );
 			boolean retVal = stringValidator.validate();
             
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -232,11 +225,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testMatch("HelloWorld")
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -250,11 +243,11 @@ public class StringValidatorTest
             boolean retVal = Validate.defineString("HelloWorld").testMatch("[A-Za-z]*")
                     .throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }

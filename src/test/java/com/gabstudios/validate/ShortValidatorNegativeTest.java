@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the ShortValidator
@@ -31,21 +28,19 @@ import org.junit.Test;
  *
  */
 public class ShortValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
     public void testMaxValue() {
         short x = 5;
         short max = 4;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -55,7 +50,7 @@ public class ShortValidatorNegativeTest {
 
         short x = 5;
         short min = 7;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -65,7 +60,7 @@ public class ShortValidatorNegativeTest {
 
         short x = 5;
         short y = 6;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -74,7 +69,7 @@ public class ShortValidatorNegativeTest {
     public void testZeroValue() {
 
         short x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -83,7 +78,7 @@ public class ShortValidatorNegativeTest {
     public void testPositiveValue() {
 
         short x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -92,7 +87,7 @@ public class ShortValidatorNegativeTest {
     public void testNegativeValue() {
 
         short x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineShort(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }
