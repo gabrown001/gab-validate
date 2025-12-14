@@ -157,18 +157,18 @@ public class Validate
         return (new StringValidator(value));
     }
     
-    // /**
-    //  * This method defines a String validator. Each call creates a new
-    //  * validator.
-    //  *
-    //  * @param value
-    //  *            The Object value to validate.
-    //  * @return A <code>ObjectValidator</code> instance.
-    //  */
-    // public static final ObjectValidator<Object> defineObject(final Object value)
-    // {
-    //     return (new ObjectValidator<Object>(value));
-    // }
+    /**
+     * This method defines a String validator. Each call creates a new
+     * validator.
+     *
+     * @param value
+     *            The Object value to validate.
+     * @return A <code>ObjectValidator</code> instance.
+     */
+    public static final ObjectValidator<Object> defineObject(final Object value)
+    {
+        return (new ObjectValidator<>(value));
+    }
     
     /**
      * This method defines a Array validator. Each call creates a new validator.

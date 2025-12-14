@@ -38,7 +38,7 @@ package com.gabstudios.validate;
  * @param <C> An object class such as String, Boolean, Character, Short, Integer, etc.
  *
  */
-public abstract class ObjectValidator<C> implements Validator
+public class ObjectValidator<C> implements Validator
 {
 	
     /*
