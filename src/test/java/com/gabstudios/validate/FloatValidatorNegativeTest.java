@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the FloatValidator
@@ -31,21 +28,19 @@ import org.junit.Test;
  *
  */
 public class FloatValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
     public void testMaxValue() {
         float x = 5;
         float max = 4;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -55,7 +50,7 @@ public class FloatValidatorNegativeTest {
 
         float x = 5;
         float min = 7;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).testMinValue(min).throwValidationExceptionOnFail().validate());
     }
 
@@ -63,7 +58,7 @@ public class FloatValidatorNegativeTest {
     public void testEquals() {
         float x = 5;
         float y = 6;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -72,7 +67,7 @@ public class FloatValidatorNegativeTest {
     public void testZeroValue() {
 
         float x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -81,7 +76,7 @@ public class FloatValidatorNegativeTest {
     public void testPositiveValue() {
 
         float x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -90,7 +85,7 @@ public class FloatValidatorNegativeTest {
     public void testNegativeValue() {
 
         float x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineFloat(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }

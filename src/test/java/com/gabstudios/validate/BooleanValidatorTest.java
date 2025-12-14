@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 
 /**
@@ -33,16 +30,12 @@ import org.junit.Test;
  */
 public class BooleanValidatorTest
 {
-    @Before
-    public void setUp()
-    {
-        //
+    @BeforeEach
+    public void setUp() {
     }
-    
-    @After
-    public void tearDown()
-    {
-        
+
+    @AfterEach
+    public void tearDown() {
     }
     
     @Test
@@ -51,11 +44,11 @@ public class BooleanValidatorTest
         try
         {
             String desc = Validate.defineBoolean(true).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         }
         catch (final Exception e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -66,11 +59,11 @@ public class BooleanValidatorTest
         try
         {
             boolean retValue = Validate.defineBoolean(true).getValue();
-            Assert.assertEquals(true, retValue);
+            Assertions.assertEquals(true, retValue);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -83,11 +76,11 @@ public class BooleanValidatorTest
         try
         {
             boolean retVal = Validate.defineBoolean(true).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -99,11 +92,11 @@ public class BooleanValidatorTest
         try
         {
             boolean retVal = Validate.defineBoolean(true).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -116,11 +109,11 @@ public class BooleanValidatorTest
         {
             boolean retVal = Validate.defineBoolean(true).testTrue().throwValidationExceptionOnFail().validate();
             
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final IllegalArgumentException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -134,11 +127,11 @@ public class BooleanValidatorTest
             boolean retVal = Validate.defineBoolean(false).testFalse().throwValidationExceptionOnFail()
                     .validate();
             
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final IllegalArgumentException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -152,11 +145,11 @@ public class BooleanValidatorTest
             boolean retVal = Validate.defineBoolean(true).testEquals(true).throwValidationExceptionOnFail()
                     .validate();
             
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final IllegalArgumentException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }
@@ -170,11 +163,11 @@ public class BooleanValidatorTest
             boolean retVal = Validate.defineBoolean(false).testEquals(false)
                     .throwValidationExceptionOnFail().validate();
             
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final IllegalArgumentException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
         
     }

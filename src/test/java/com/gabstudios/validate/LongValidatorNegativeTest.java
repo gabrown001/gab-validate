@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the LongValidator
@@ -31,21 +28,19 @@ import org.junit.Test;
  *
  */
 public class LongValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
     public void testMaxValue() {
         long x = 5;
         long max = 4;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -54,7 +49,7 @@ public class LongValidatorNegativeTest {
     public void testMinLength() {
         long x = 5;
         long min = 7;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -63,7 +58,7 @@ public class LongValidatorNegativeTest {
     public void testEquals() {
         long x = 5;
         long y = 6;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -72,7 +67,7 @@ public class LongValidatorNegativeTest {
     public void testZeroValue() {
 
         long x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -81,7 +76,7 @@ public class LongValidatorNegativeTest {
     public void testPositiveValue() {
 
         long x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -90,7 +85,7 @@ public class LongValidatorNegativeTest {
     public void testNegativeValue() {
 
         long x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineLong(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }

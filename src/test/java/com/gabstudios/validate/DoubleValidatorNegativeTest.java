@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the DoubleValidator
@@ -31,14 +28,12 @@ import org.junit.Test;
  *
  */
 public class DoubleValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
@@ -46,7 +41,7 @@ public class DoubleValidatorNegativeTest {
 
         double x = 5;
         double max = 4;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -59,9 +54,9 @@ public class DoubleValidatorNegativeTest {
             double max = 4;
             boolean retVal = Validate.defineDouble(x).testMaxValue(max).validate();
 
-            Assert.assertEquals(false, retVal);
+            Assertions.assertEquals(false, retVal);
         } catch (final ValidateException e) {
-            Assert.fail();
+            Assertions.fail();
         }
 
     }
@@ -71,7 +66,7 @@ public class DoubleValidatorNegativeTest {
 
         double x = 5;
         double min = 7;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -84,9 +79,9 @@ public class DoubleValidatorNegativeTest {
             double min = 7;
             boolean retVal = Validate.defineDouble(x).testMinValue(min).validate();
 
-            Assert.assertEquals(false, retVal);
+            Assertions.assertEquals(false, retVal);
         } catch (final ValidateException e) {
-            Assert.assertTrue(false);
+            Assertions.assertTrue(false);
         }
 
     }
@@ -95,7 +90,7 @@ public class DoubleValidatorNegativeTest {
     public void testEquals() {
         double x = 5;
         double y = 6;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -108,9 +103,9 @@ public class DoubleValidatorNegativeTest {
             double y = 6;
             boolean retVal = Validate.defineDouble(x).testEquals(y).validate();
 
-            Assert.assertEquals(false, retVal);
+            Assertions.assertEquals(false, retVal);
         } catch (final ValidateException e) {
-            Assert.assertTrue(false);
+            Assertions.assertTrue(false);
         }
 
     }
@@ -119,7 +114,7 @@ public class DoubleValidatorNegativeTest {
     public void testZeroValue() {
 
         double x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -128,7 +123,7 @@ public class DoubleValidatorNegativeTest {
     public void testPositiveValue() {
 
         double x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -137,7 +132,7 @@ public class DoubleValidatorNegativeTest {
     public void testNegativeValue() {
 
         double x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineDouble(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }

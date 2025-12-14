@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A negative test class for the CharValidator
@@ -31,14 +28,12 @@ import org.junit.Test;
  *
  */
 public class CharValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
@@ -46,7 +41,7 @@ public class CharValidatorNegativeTest {
 
         char x = '5';
         char max = '4';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -56,7 +51,7 @@ public class CharValidatorNegativeTest {
 
         char x = '5';
         char min = '8';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -69,9 +64,9 @@ public class CharValidatorNegativeTest {
             char y = 'a';
             boolean retVal = Validate.defineChar(x).testEquals(y).throwValidationExceptionOnFail().validate();
 
-            Assert.assertEquals(false, retVal);
+            Assertions.assertEquals(false, retVal);
         } catch (final ValidateException e) {
-            Assert.assertTrue(true);
+            Assertions.assertTrue(true);
         }
 
     }
@@ -80,7 +75,7 @@ public class CharValidatorNegativeTest {
     public void testIsDigit() {
 
         char x = '#';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testIsDigit().throwValidationExceptionOnFail().validate());
 
     }
@@ -88,7 +83,7 @@ public class CharValidatorNegativeTest {
     @Test
     public void testIsLowerCase() {
         char x = 'A';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testIsLowerCase().throwValidationExceptionOnFail().validate());
 
     }
@@ -97,7 +92,7 @@ public class CharValidatorNegativeTest {
     public void testIsUpperCase() {
 
         char x = 'a';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testIsUpperCase().throwValidationExceptionOnFail().validate());
 
     }
@@ -105,7 +100,7 @@ public class CharValidatorNegativeTest {
     @Test
     public void testIsWhitespace() {
         char x = 'A';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testIsWhitespace().throwValidationExceptionOnFail().validate());
 
     }
@@ -113,7 +108,7 @@ public class CharValidatorNegativeTest {
     @Test
     public void testNotEmpty() {
         char x = '\0';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineChar(x).testNotEmpty().throwValidationExceptionOnFail().validate());
 
     }

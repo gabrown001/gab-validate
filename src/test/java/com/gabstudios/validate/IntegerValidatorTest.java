@@ -19,11 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.*;
 /**
  * A test class for the IntegerValidator
  *
@@ -31,14 +27,12 @@ import org.junit.Test;
  *
  */
 public class IntegerValidatorTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
@@ -46,9 +40,9 @@ public class IntegerValidatorTest {
         int x = 5;
         try {
             String desc = Validate.defineInteger(x).toString();
-            Assert.assertTrue(desc != null && desc.length() != 0);
+            Assertions.assertTrue(desc != null && desc.length() != 0);
         } catch (final Exception e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -58,9 +52,9 @@ public class IntegerValidatorTest {
         int x = 5;
         try {
             int retVal = Validate.defineInteger(x).getValue();
-            Assert.assertEquals(x, retVal);
+            Assertions.assertEquals(x, retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -70,9 +64,9 @@ public class IntegerValidatorTest {
         int x = 5;
         try {
             boolean retVal = Validate.defineInteger(x).throwValidationExceptionOnFail().validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -82,9 +76,9 @@ public class IntegerValidatorTest {
         int x = 5;
         try {
             boolean retVal = Validate.defineInteger(x).validate();
-            Assert.assertEquals(true, retVal);
+            Assertions.assertEquals(true, retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -97,9 +91,9 @@ public class IntegerValidatorTest {
             int max = 10;
             boolean retVal = Validate.defineInteger(x).testMaxValue(max).throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -112,9 +106,9 @@ public class IntegerValidatorTest {
             int min = 4;
             boolean retVal = Validate.defineInteger(x).testMinValue(min).throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -127,9 +121,9 @@ public class IntegerValidatorTest {
             int y = 5;
             boolean retVal = Validate.defineInteger(x).testEquals(y).throwValidationExceptionOnFail().validate();
 
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -140,11 +134,11 @@ public class IntegerValidatorTest {
         try {
             int x = 0;
             boolean retVal = Validate.defineInteger(x).isZeroValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -155,11 +149,11 @@ public class IntegerValidatorTest {
         try {
             int x = 5;
             boolean retVal = Validate.defineInteger(x).isPositiveValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }
@@ -170,11 +164,11 @@ public class IntegerValidatorTest {
         try {
             int x = -5;
             boolean retVal = Validate.defineInteger(x).isNegativeValue().throwValidationExceptionOnFail().validate();
-            Assert.assertTrue(retVal);
+            Assertions.assertTrue(retVal);
         }
         catch (final ValidateException e)
         {
-            Assert.fail(e.toString());
+            Assertions.fail(e.toString());
         }
 
     }

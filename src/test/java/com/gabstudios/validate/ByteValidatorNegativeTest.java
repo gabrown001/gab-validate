@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the ByteValidator
@@ -31,14 +28,12 @@ import org.junit.Test;
  *
  */
 public class ByteValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
@@ -46,7 +41,7 @@ public class ByteValidatorNegativeTest {
 
         byte x = '5';
         byte max = '4';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -56,7 +51,7 @@ public class ByteValidatorNegativeTest {
 
         byte x = '5';
         byte min = '7';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -66,7 +61,7 @@ public class ByteValidatorNegativeTest {
 
         byte x = '5';
         byte y = '6';
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -75,7 +70,7 @@ public class ByteValidatorNegativeTest {
     public void testZeroValue() {
 
         byte x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -84,7 +79,7 @@ public class ByteValidatorNegativeTest {
     public void testPositiveValue() {
 
         byte x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -93,7 +88,7 @@ public class ByteValidatorNegativeTest {
     public void testNegativeValue() {
 
         byte x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineByte(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }

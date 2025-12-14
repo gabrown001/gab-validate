@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  * A test class for the IntegerValidator
@@ -31,14 +28,12 @@ import org.junit.Test;
  *
  */
 public class IntegerValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
@@ -46,7 +41,7 @@ public class IntegerValidatorNegativeTest {
 
         int x = 5;
         int max = 4;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).testMaxValue(max).throwValidationExceptionOnFail().validate());
 
     }
@@ -56,7 +51,7 @@ public class IntegerValidatorNegativeTest {
 
         int x = 5;
         int min = 7;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).testMinValue(min).throwValidationExceptionOnFail().validate());
 
     }
@@ -65,7 +60,7 @@ public class IntegerValidatorNegativeTest {
     public void testEquals() {
         int x = 5;
         int y = 6;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).testEquals(y).throwValidationExceptionOnFail().validate());
 
     }
@@ -74,7 +69,7 @@ public class IntegerValidatorNegativeTest {
     public void testZeroValue() {
 
         int x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).isZeroValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -83,7 +78,7 @@ public class IntegerValidatorNegativeTest {
     public void testPositiveValue() {
 
         int x = -5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).isPositiveValue().throwValidationExceptionOnFail().validate());
 
     }
@@ -92,7 +87,7 @@ public class IntegerValidatorNegativeTest {
     public void testNegativeValue() {
 
         int x = 5;
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineInteger(x).isNegativeValue().throwValidationExceptionOnFail().validate());
 
     }

@@ -19,10 +19,7 @@
 
 package com.gabstudios.validate;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 /**
  *
@@ -31,20 +28,18 @@ import org.junit.Test;
  *
  */
 public class BooleanValidatorNegativeTest {
-    @Before
+    @BeforeEach
     public void setUp() {
-        //
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
-
     }
 
     @Test
     public void testTrue() {
 
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineBoolean(true).testFalse().throwValidationExceptionOnFail().validate());
 
     }
@@ -52,7 +47,7 @@ public class BooleanValidatorNegativeTest {
     @Test
     public void testFalse() {
 
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineBoolean(false).testTrue().throwValidationExceptionOnFail().validate());
 
     }
@@ -60,7 +55,7 @@ public class BooleanValidatorNegativeTest {
     @Test
     public void testEquals() {
 
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineBoolean(false).testEquals(true).throwValidationExceptionOnFail().validate());
 
     }
@@ -68,7 +63,7 @@ public class BooleanValidatorNegativeTest {
     @Test
     public void testEquals2() {
 
-        Assert.assertThrows(ValidateException.class,
+        Assertions.assertThrows(ValidateException.class,
                 () -> Validate.defineBoolean(true).testEquals(false).throwValidationExceptionOnFail().validate());
 
     }
