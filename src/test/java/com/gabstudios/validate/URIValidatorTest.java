@@ -278,13 +278,12 @@ public class URIValidatorTest
 	@Test
 	public void testAllowedProtocolsFails()
 	{
-
 		String urlString = HTTP_LOCALHOST;
-
 		try
 		{
-			URI uri = new URI (urlString);
+			URI uri = new URI(urlString);
 			boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail().validate();
+			// Corrected: boolean first, then message
 			Assert.fail("Expected protocol restriction to fail validation.");
 		}
 		catch (final ValidateException e)
@@ -306,7 +305,6 @@ public class URIValidatorTest
 		{
 			URI uri = new URI (urlString);
 			boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
-
 			Assert.assertTrue(retVal);
 		}
 		catch (final ValidateException e)
