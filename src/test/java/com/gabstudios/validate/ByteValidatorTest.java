@@ -21,15 +21,12 @@ package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
-
 /**
  * A test class for the ByteValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class ByteValidatorTest
-{
+public class ByteValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -37,135 +34,101 @@ public class ByteValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
+    public void testToString() {
         byte x = 5;
-        try
-        {
+        try {
             String desc = Validate.defineByte(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
+    public void testGetValue() {
         byte x = 5;
-        try
-        {
+        try {
             byte retVal = Validate.defineByte(x).getValue();
             Assertions.assertEquals(x, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    @Test
-    public void testNoTest()
-    {
 
-        try
-        {
+    @Test
+    public void testNoTest() {
+
+        try {
             byte x = 5;
             boolean retVal = Validate.defineByte(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    @Test
-    public void testNoTest2()
-    {
 
-        try
-        {
+    @Test
+    public void testNoTest2() {
+
+        try {
             byte x = 5;
             boolean retVal = Validate.defineByte(x).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
-    @Test
-    public void testMaxValue()
-    {
 
-        try
-        {
+    @Test
+    public void testMaxValue() {
+
+        try {
             byte x = 5;
             byte max = 8;
-            boolean retVal = Validate.defineByte(x).testMaxValue(max)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineByte(x).testMaxValue(max).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testMinLength()
-    {
-        
-        try
-        {
+    public void testMinLength() {
+
+        try {
             byte x = 5;
             byte min = 4;
-            boolean retVal = Validate.defineByte(x).testMinValue(min)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineByte(x).testMinValue(min).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
-    
+
     @Test
-    public void testEquals()
-    {
-        
-        try
-        {
+    public void testEquals() {
+
+        try {
             byte x = 5;
-            byte y= 5;
-            boolean retVal = Validate.defineByte(x).testEquals(y)
-                    .throwValidationExceptionOnFail().validate();
+            byte y = 5;
+            boolean retVal = Validate.defineByte(x).testEquals(y).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
-    }
 
+    }
 
     @Test
     public void testZeroValue() {
@@ -174,9 +137,7 @@ public class ByteValidatorTest
             byte x = 0;
             boolean retVal = Validate.defineByte(x).isZeroValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -189,9 +150,7 @@ public class ByteValidatorTest
             byte x = 5;
             boolean retVal = Validate.defineByte(x).isPositiveValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -204,12 +163,10 @@ public class ByteValidatorTest
             byte x = -5;
             boolean retVal = Validate.defineByte(x).isNegativeValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
 }

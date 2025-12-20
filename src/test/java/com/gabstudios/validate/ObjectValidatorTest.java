@@ -16,17 +16,16 @@
  *
  *****************************************************************************************
  */
-
 package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
 /**
- * A test class for the ShortValidator
+ * A test class for the ObjectValidator
  *
  * @author Gregory Brown (sysdevone)
  */
-public class ShortValidatorTest {
+public class ObjectValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -37,9 +36,9 @@ public class ShortValidatorTest {
 
     @Test
     public void testToString() {
-        short x = 5;
+        String x = "5";
         try {
-            String desc = Validate.defineShort(x).toString();
+            String desc = Validate.defineObject(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
         } catch (final Exception e) {
             Assertions.fail(e.toString());
@@ -49,9 +48,9 @@ public class ShortValidatorTest {
 
     @Test
     public void testGetValue() {
-        short x = 5;
+        String x = "5";
         try {
-            short retVal = Validate.defineShort(x).getValue();
+            String retVal = (String) Validate.defineObject(x).getValue();
             Assertions.assertEquals(x, retVal);
         } catch (final ValidateException e) {
             Assertions.fail(e.toString());
@@ -61,9 +60,9 @@ public class ShortValidatorTest {
 
     @Test
     public void testNoTest() {
-        short x = '5';
+        String x = "5";
         try {
-            boolean retVal = Validate.defineShort(x).throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineObject(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
         } catch (final ValidateException e) {
             Assertions.fail(e.toString());
@@ -73,40 +72,10 @@ public class ShortValidatorTest {
 
     @Test
     public void testNoTest2() {
-        short x = '5';
+        String x = "5";
         try {
-            boolean retVal = Validate.defineShort(x).validate();
+            boolean retVal = Validate.defineObject(x).validate();
             Assertions.assertEquals(true, retVal);
-        } catch (final ValidateException e) {
-            Assertions.fail(e.toString());
-        }
-
-    }
-
-    @Test
-    public void testMaxValue() {
-
-        try {
-            short x = 5;
-            short max = 10;
-            boolean retVal = Validate.defineShort(x).testMaxValue(max).throwValidationExceptionOnFail().validate();
-
-            Assertions.assertTrue(retVal);
-        } catch (final ValidateException e) {
-            Assertions.fail(e.toString());
-        }
-
-    }
-
-    @Test
-    public void testMinLength() {
-
-        try {
-            short x = 5;
-            short min = 4;
-            boolean retVal = Validate.defineShort(x).testMinValue(min).throwValidationExceptionOnFail().validate();
-
-            Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
@@ -117,9 +86,8 @@ public class ShortValidatorTest {
     public void testEquals() {
 
         try {
-            short x = 5;
-            short y = 5;
-            boolean retVal = Validate.defineShort(x).testEquals(y).throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineObject("HelloWorld").testEquals("HelloWorld")
+                    .throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
@@ -129,37 +97,12 @@ public class ShortValidatorTest {
     }
 
     @Test
-    public void testZeroValue() {
+    public void testNotNull() {
 
         try {
-            short x = 0;
-            boolean retVal = Validate.defineShort(x).isZeroValue().throwValidationExceptionOnFail().validate();
-            Assertions.assertTrue(retVal);
-        } catch (final ValidateException e) {
-            Assertions.fail(e.toString());
-        }
+            boolean retVal = Validate.defineObject("HelloWorld").testNotNull().throwValidationExceptionOnFail()
+                    .validate();
 
-    }
-
-    @Test
-    public void testPositiveValue() {
-
-        try {
-            short x = 5;
-            boolean retVal = Validate.defineShort(x).isPositiveValue().throwValidationExceptionOnFail().validate();
-            Assertions.assertTrue(retVal);
-        } catch (final ValidateException e) {
-            Assertions.fail(e.toString());
-        }
-
-    }
-
-    @Test
-    public void testNegativeValue() {
-
-        try {
-            short x = -5;
-            boolean retVal = Validate.defineShort(x).isNegativeValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
         } catch (final ValidateException e) {
             Assertions.fail(e.toString());

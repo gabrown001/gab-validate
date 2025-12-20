@@ -22,10 +22,7 @@ package com.gabstudios.validate;
 import org.junit.jupiter.api.*;
 
 /**
- *
- *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class BooleanValidatorNegativeTest {
     @BeforeEach

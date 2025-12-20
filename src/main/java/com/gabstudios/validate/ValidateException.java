@@ -17,31 +17,27 @@
  *****************************************************************************************
  */
 
- 
 package com.gabstudios.validate;
 
 /**
+ * Exception thrown when a validation error occurs.
  *
- * 
- * @author Gregory Brown (sysdevone)
- *
+ * @author G Brown
  */
-public class ValidateException extends RuntimeException
-{
-    
+public class ValidateException extends RuntimeException {
+
     /**
      * Serialized version number.
      */
     private static final long serialVersionUID = 2153424671222831231L;
-    
+
     /**
      * Constructor that takes a message.
-     * 
+     *
      * @param message
      *            A <code>String</code> message.
      */
-    protected ValidateException(final String message)
-    {
+    protected ValidateException(final String message) {
         super(message);
     }
 }

@@ -20,11 +20,11 @@
 package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
+
 /**
  * A test class for the IntegerValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class IntegerValidatorTest {
     @BeforeEach
@@ -135,9 +135,7 @@ public class IntegerValidatorTest {
             int x = 0;
             boolean retVal = Validate.defineInteger(x).isZeroValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -150,9 +148,7 @@ public class IntegerValidatorTest {
             int x = 5;
             boolean retVal = Validate.defineInteger(x).isPositiveValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -165,9 +161,7 @@ public class IntegerValidatorTest {
             int x = -5;
             boolean retVal = Validate.defineInteger(x).isNegativeValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 

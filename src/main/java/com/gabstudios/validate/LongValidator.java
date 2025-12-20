@@ -17,50 +17,39 @@
  *****************************************************************************************
  */
 
-
 package com.gabstudios.validate;
 
 /**
- * This is a long validator. After this class is created, call the testXXXX()
- * methods to perform tests when the validate() method is called.
- * 
- *      Validate.defineLong(long).testNotNull().validate();
+ * This is a long validator. After this class is created, call the testXXXX() methods to perform tests when the
+ * validate() method is called. Validate.defineLong(long).testNotNull().validate(); If the
+ * throwValidationExceptionOnFail() method has been called and if the validate fails then a ValidateException will be
+ * thrown. Validate.defineLong(long).testEquals(long) .throwValidationExceptionOnFail().validate(); If no test method is
+ * called, validate() returns a TRUE.
  *
- * If the throwValidationExceptionOnFail() method has been called and if the validate fails
- * then a ValidateException will be thrown.
- * 
- *      Validate.defineLong(long).testEquals(long)
- *          .throwValidationExceptionOnFail().validate();
- *
- * If no test method is called, validate() returns a TRUE.
- *
- * @author Gregory Brown (sysdevone)
- *
+ * @author G Brown
  */
-public final class LongValidator  extends NumberValidator<Long>
-{
-   
+public final class LongValidator extends NumberValidator<Long> {
+
     /**
      * Protected constructor. Use Validate static method to create validator.
      *
      * @param value
      *            The value that will be validated.
      */
-    protected LongValidator(final long value)
-    {
-        super( value, Long.MIN_VALUE, Long.MAX_VALUE, Long.valueOf(0) );
+    protected LongValidator(final long value) {
+        super(value, Long.MIN_VALUE, Long.MAX_VALUE, Long.valueOf(0));
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return String.format(
-				"LongValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
-				_isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
-				_equalsValue, _isTestEquals, _isTestNotNull, _value);
-	}
-    
-    
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.format(
+                "LongValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
+                _isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
+                _equalsValue, _isTestEquals, _isTestNotNull, _value);
+    }
+
 }
