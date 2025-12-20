@@ -24,10 +24,8 @@ import org.junit.jupiter.api.*;
  * Basic tests for the Validator class.
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class ValidateTest
-{
+public class ValidateTest {
 
     @BeforeEach
     public void setUp() {
@@ -41,210 +39,173 @@ public class ValidateTest
      * Tests the defineString method.
      */
     @Test
-    public void defineString()
-    {
-        
-        try
-        {
-            StringValidator stringValidator = Validate
-                    .defineString("HelloWorld");
+    public void defineString() {
+
+        try {
+            StringValidator stringValidator = Validate.defineString("HelloWorld");
             Assertions.assertNotNull(stringValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineBoolean method.
      */
     @Test
-    public void defineBoolean()
-    {
-        
-        try
-        {
+    public void defineBoolean() {
+
+        try {
             BooleanValidator booleanValidator = Validate.defineBoolean(true);
             Assertions.assertNotNull(booleanValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineByte method.
      */
     @Test
-    public void defineByte()
-    {
-        
-        try
-        {
+    public void defineByte() {
+
+        try {
             ByteValidator byteValidator = Validate.defineByte((byte) 0xa);
             Assertions.assertNotNull(byteValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineChar method.
      */
     @Test
-    public void defineChar()
-    {
-        
-        try
-        {
+    public void defineChar() {
+
+        try {
             CharValidator charValidator = Validate.defineChar('C');
             Assertions.assertNotNull(charValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineDouble method.
      */
     @Test
-    public void defineDouble()
-    {
-        
-        try
-        {
+    public void defineDouble() {
+
+        try {
             DoubleValidator doubleValidator = Validate.defineDouble(1.5);
             Assertions.assertNotNull(doubleValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineFloat method.
      */
     @Test
-    public void defineFloat()
-    {
-        
-        try
-        {
+    public void defineFloat() {
+
+        try {
             FloatValidator floatValidator = Validate.defineFloat(1.0F);
             Assertions.assertNotNull(floatValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineInteger method.
      */
     @Test
-    public void defineInteger()
-    {
-        
-        try
-        {
+    public void defineInteger() {
+
+        try {
             IntegerValidator intValidator = Validate.defineInteger(55);
             Assertions.assertNotNull(intValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineShort method.
      */
     @Test
-    public void defineShort()
-    {
-        
-        try
-        {
+    public void defineShort() {
+
+        try {
             ShortValidator shortValidator = Validate.defineShort((short) 100);
             Assertions.assertNotNull(shortValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     /*
      * Tests the defineLong method.
      */
     @Test
-    public void defineLong()
-    {
-        
-        try
-        {
+    public void defineLong() {
+
+        try {
             LongValidator longValidator = Validate.defineLong(100L);
             Assertions.assertNotNull(longValidator);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     // /*
-    //  * Tests the defineLong method.
-    //  */
+    // * Tests the defineLong method.
+    // */
     // @Test
     // public void defineObject1()
     // {
-        
-    //     try
-    //     {
-    //         ObjectValidator<?> objectValidator = Validate.defineObject(100L);
-    //         Assertions.assertTrue(objectValidator != null);
-    //     }
-    //     catch (final Exception e)
-    //     {
-    //         Assertions.fail(e.toString());
-    //     }
-        
+
+    // try
+    // {
+    // ObjectValidator<?> objectValidator = Validate.defineObject(100L);
+    // Assertions.assertTrue(objectValidator != null);
     // }
-    
+    // catch (final Exception e)
+    // {
+    // Assertions.fail(e.toString());
+    // }
+
+    // }
+
     // /*
-    //  * Tests the defineLong method.
-    //  */
+    // * Tests the defineLong method.
+    // */
     // @Test
     // public void defineObject2()
     // {
-    //     Object object = new Object();
-    //     try
-    //     {
-    //         ObjectValidator<?> objectValidator = Validate.defineObject(object);
-    //         Assertions.assertTrue(objectValidator != null);
-    //     }
-    //     catch (final Exception e)
-    //     {
-    //         Assertions.fail(e.toString());
-    //     }
-        
+    // Object object = new Object();
+    // try
+    // {
+    // ObjectValidator<?> objectValidator = Validate.defineObject(object);
+    // Assertions.assertTrue(objectValidator != null);
     // }
-    
+    // catch (final Exception e)
+    // {
+    // Assertions.fail(e.toString());
+    // }
+
+    // }
+
 }

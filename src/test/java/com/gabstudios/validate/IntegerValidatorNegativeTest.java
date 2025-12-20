@@ -25,7 +25,6 @@ import org.junit.jupiter.api.*;
  * A test class for the IntegerValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class IntegerValidatorNegativeTest {
     @BeforeEach

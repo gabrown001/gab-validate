@@ -21,15 +21,12 @@ package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
-
 /**
  * A test class for the DoubleValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class DoubleValidatorTest
-{
+public class DoubleValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -37,132 +34,98 @@ public class DoubleValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
-    	double x = 5.0d;
-        try
-        {
+    public void testToString() {
+        double x = 5.0d;
+        try {
             String desc = Validate.defineDouble(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
-    	double x = 5.0d;
-        try
-        {
+    public void testGetValue() {
+        double x = 5.0d;
+        try {
             double retVal = Validate.defineDouble(x).getValue();
             Assertions.assertEquals(x, retVal, 0);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
+
     @Test
-    public void testNoTest()
-    {
-    	double x = 5.0d;
-        try
-        {
+    public void testNoTest() {
+        double x = 5.0d;
+        try {
             boolean retVal = Validate.defineDouble(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testNoTest2()
-    {
-    	double x = 5.0d;
-        try
-        {
+    public void testNoTest2() {
+        double x = 5.0d;
+        try {
             boolean retVal = Validate.defineDouble(x).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
-    }    
-    
-    
-    @Test
-    public void testMaxValue()
-    {
+    }
 
-        try
-        {
-        	double x = 5.0d;
+    @Test
+    public void testMaxValue() {
+
+        try {
+            double x = 5.0d;
             double max = 10.0d;
-            boolean retVal = Validate.defineDouble(x).testMaxValue(max)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineDouble(x).testMaxValue(max).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testMinLength()
-    {
-        
-        try
-        {
-        	double x = 5.0d;
+    public void testMinLength() {
+
+        try {
+            double x = 5.0d;
             double min = 4.0d;
-            boolean retVal = Validate.defineDouble(x).testMinValue(min)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineDouble(x).testMinValue(min).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
-    
+
     @Test
-    public void testEquals()
-    {
-        
-        try
-        {
-        	double x = 5.0d;
-        	double y = 5.0d;
-            boolean retVal = Validate.defineDouble(x).testEquals(y)
-                    .throwValidationExceptionOnFail().validate();
+    public void testEquals() {
+
+        try {
+            double x = 5.0d;
+            double y = 5.0d;
+            boolean retVal = Validate.defineDouble(x).testEquals(y).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
 
     @Test
@@ -172,9 +135,7 @@ public class DoubleValidatorTest
             double x = 0d;
             boolean retVal = Validate.defineDouble(x).isZeroValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -187,9 +148,7 @@ public class DoubleValidatorTest
             double x = 5d;
             boolean retVal = Validate.defineDouble(x).isPositiveValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -202,12 +161,10 @@ public class DoubleValidatorTest
             double x = -5d;
             boolean retVal = Validate.defineDouble(x).isNegativeValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
 }

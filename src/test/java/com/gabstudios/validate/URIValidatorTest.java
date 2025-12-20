@@ -25,19 +25,18 @@ import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 import org.junit.jupiter.api.*;
+
 /**
- * A test class for the URIValidator.
- * This class contains unit tests to validate the functionality of the URIValidator,
- * including tests for allow/deny lists, protocol restrictions, port validations,
- * length checks, null/empty checks, and equality tests.
+ * A test class for the URIValidator. This class contains unit tests to validate the functionality of the URIValidator,
+ * including tests for allow/deny lists, protocol restrictions, port validations, length checks, null/empty checks, and
+ * equality tests.
  *
  * @author Gregory Brown (sysdevone)
  */
-public class URIValidatorTest
-{
-	private static final String HTTPS_LOCALHOST = "https://localhost";
-	private static final String HTTP_LOCALHOST = "http://localhost";
-	private static final String HTTPS_LOCALHOST_NON_STANDARD_PORT = "https://localhost:8443";
+public class URIValidatorTest {
+    private static final String HTTPS_LOCALHOST = "https://localhost";
+    private static final String HTTP_LOCALHOST = "http://localhost";
+    private static final String HTTPS_LOCALHOST_NON_STANDARD_PORT = "https://localhost:8443";
 
     @BeforeEach
     public void setUp() {
@@ -47,286 +46,213 @@ public class URIValidatorTest
     public void tearDown() {
     }
 
-	@Test
-	public void testAllowList()
-	{
-		String urlString = HTTPS_LOCALHOST;
-		String valueString = HTTPS_LOCALHOST;
-		try
-		{
-			URI uri = new URI (urlString);
-			Validate.defineURI(uri).testMatchAllowDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assertions.assertTrue(true);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (MalformedURLException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (UnknownHostException e)
-		{
-			Assertions.fail(e.toString());
-		} 
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
+    @Test
+    public void testAllowList() {
+        String urlString = HTTPS_LOCALHOST;
+        String valueString = HTTPS_LOCALHOST;
+        try {
+            URI uri = new URI(urlString);
+            Validate.defineURI(uri).testMatchAllowDomain(valueString).throwValidationExceptionOnFail().validate();
+            Assertions.assertTrue(true);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (MalformedURLException e) {
+            Assertions.fail(e.toString());
+        } catch (UnknownHostException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
 
-	}
+    }
 
-	@Test
-	public void testDenyList()
-	{		
-		String urlString = HTTPS_LOCALHOST;
-		String valueString = HTTPS_LOCALHOST;
-		try
-		{
-			URI uri = new URI (urlString);
-			Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assertions.fail("Expected validation to fail when the URL matches the deny list.");
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.assertTrue(true);
-		}
-		catch (MalformedURLException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (UnknownHostException e)
-		{
-			Assertions.fail(e.toString());
-		} 
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+    @Test
+    public void testDenyList() {
+        String urlString = HTTPS_LOCALHOST;
+        String valueString = HTTPS_LOCALHOST;
+        try {
+            URI uri = new URI(urlString);
+            Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
+            Assertions.fail("Expected validation to fail when the URL matches the deny list.");
+        } catch (final ValidateException e) {
+            Assertions.assertTrue(true);
+        } catch (MalformedURLException e) {
+            Assertions.fail(e.toString());
+        } catch (UnknownHostException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testDenyListOctal()
-	{		
-		String urlString = HTTPS_LOCALHOST;
-		String valueString = "https%3A%2F%2Flocalhost";
-		try
-		{
-			URI uri = new URI (urlString);
-			Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
-			Assertions.fail("Expected validation to fail when the URL matches the deny list.");
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.assertTrue(true);
-		}
-		catch (MalformedURLException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (UnknownHostException e)
-		{
-			Assertions.fail(e.toString());
-		} 
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+    @Test
+    public void testDenyListOctal() {
+        String urlString = HTTPS_LOCALHOST;
+        String valueString = "https%3A%2F%2Flocalhost";
+        try {
+            URI uri = new URI(urlString);
+            Validate.defineURI(uri).testMatchDenyDomain(valueString).throwValidationExceptionOnFail().validate();
+            Assertions.fail("Expected validation to fail when the URL matches the deny list.");
+        } catch (final ValidateException e) {
+            Assertions.assertTrue(true);
+        } catch (MalformedURLException e) {
+            Assertions.fail(e.toString());
+        } catch (UnknownHostException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testEquals()
-	{
-		String urlString = HTTPS_LOCALHOST;
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).testEquals(urlString).throwValidationExceptionOnFail()
-			        .validate();
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
+    @Test
+    public void testEquals() {
+        String urlString = HTTPS_LOCALHOST;
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).testEquals(urlString).throwValidationExceptionOnFail().validate();
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
 
-	}
+    }
 
-	@Test
-	public void testMaxLength()
-	{
-		String urlString = HTTPS_LOCALHOST;
+    @Test
+    public void testMaxLength() {
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).testMaxLength(urlString.length()).throwValidationExceptionOnFail()
-			        .validate();
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).testMaxLength(urlString.length()).throwValidationExceptionOnFail()
+                    .validate();
 
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		} 
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
 
-	}
+    }
 
-	@Test
-	public void testMinLength()
-	{
+    @Test
+    public void testMinLength() {
 
-		String urlString = HTTPS_LOCALHOST;
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).testMinLength(8).throwValidationExceptionOnFail().validate();
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).testMinLength(8).throwValidationExceptionOnFail().validate();
 
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
 
-	}
+    }
 
-	@Test
-	public void testNotNullEmpty()
-	{
+    @Test
+    public void testNotNullEmpty() {
 
-		String urlString = HTTPS_LOCALHOST;
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).testNotNullEmpty().throwValidationExceptionOnFail()
-			        .validate();
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).testNotNullEmpty().throwValidationExceptionOnFail().validate();
 
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testNotNull()
-	{
+    @Test
+    public void testNotNull() {
 
-		String urlString = HTTPS_LOCALHOST;
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).testNotNull().throwValidationExceptionOnFail()
-			        .validate();
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).testNotNull().throwValidationExceptionOnFail().validate();
 
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testAllowedProtocols()
-	{
+    @Test
+    public void testAllowedProtocols() {
 
-		String urlString = HTTPS_LOCALHOST;
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail().validate();
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail()
+                    .validate();
 
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testAllowedProtocolsFails()
-	{
-		String urlString = HTTP_LOCALHOST;
-		try
-		{
-			URI uri = new URI(urlString);
-			boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail().validate();
-			// Corrected: boolean first, then message
-			Assertions.fail("Expected protocol restriction to fail validation.");
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.assertTrue(true);
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+    @Test
+    public void testAllowedProtocolsFails() {
+        String urlString = HTTP_LOCALHOST;
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail()
+                    .validate();
+            // Corrected: boolean first, then message
+            Assertions.fail("Expected protocol restriction to fail validation.");
+        } catch (final ValidateException e) {
+            Assertions.assertTrue(true);
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testAllowedPorts()
-	{
+    @Test
+    public void testAllowedPorts() {
 
-		String urlString = HTTPS_LOCALHOST;
+        String urlString = HTTPS_LOCALHOST;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
-			Assertions.assertTrue(retVal);
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.fail(e.toString());
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
-	@Test
-	public void testAllowedPortsFails()
-	{
+    @Test
+    public void testAllowedPortsFails() {
 
-		String urlString = HTTPS_LOCALHOST_NON_STANDARD_PORT;
+        String urlString = HTTPS_LOCALHOST_NON_STANDARD_PORT;
 
-		try
-		{
-			URI uri = new URI (urlString);
-			boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
-			Assertions.fail("Expected validation to fail for mismatched port.");
-		}
-		catch (final ValidateException e)
-		{
-			Assertions.assertTrue(true);
-		}
-		catch (URISyntaxException e) {
-			Assertions.fail(e.toString());
-		}
-	}
+        try {
+            URI uri = new URI(urlString);
+            boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
+            Assertions.fail("Expected validation to fail for mismatched port.");
+        } catch (final ValidateException e) {
+            Assertions.assertTrue(true);
+        } catch (URISyntaxException e) {
+            Assertions.fail(e.toString());
+        }
+    }
 
 }

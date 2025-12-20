@@ -21,15 +21,12 @@ package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
-
 /**
  * A test class for the StringValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class StringValidatorTest
-{
+public class StringValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -37,219 +34,167 @@ public class StringValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
+    public void testToString() {
         String x = "5";
-        try
-        {
+        try {
             String desc = Validate.defineString(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
+    public void testGetValue() {
         String x = "5";
-        try
-        {
+        try {
             String retVal = (String) Validate.defineString(x).getValue();
             Assertions.assertEquals(x, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
+
     @Test
-    public void testNoTest()
-    {
+    public void testNoTest() {
         String x = "5";
-        try
-        {
+        try {
             boolean retVal = Validate.defineString(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testNoTest2()
-    {
+    public void testNoTest2() {
         String x = "5";
-        try
-        {
+        try {
             boolean retVal = Validate.defineString(x).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
-            Assertions.fail(e.toString());
-        }
-
-    }  
-    
-    @Test
-    public void testMaxLength()
-    {
-
-        try
-        {
-            boolean retVal = Validate.defineString("HelloWorld").testMaxLength(10)
-                    .throwValidationExceptionOnFail().validate();
-
-            Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
 
     @Test
-    public void testMinLength()
-    {
+    public void testMaxLength() {
 
-        try
-        {
-            boolean retVal = Validate.defineString("HelloWorld").testMinLength(8)
-                    .throwValidationExceptionOnFail().validate();
+        try {
+            boolean retVal = Validate.defineString("HelloWorld").testMaxLength(10).throwValidationExceptionOnFail()
+                    .validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
 
     @Test
-    public void testNotNullEmpty()
-    {
+    public void testMinLength() {
 
-        try
-        {
-            boolean retVal = Validate.defineString("HelloWorld").testNotNullEmpty()
-                    .throwValidationExceptionOnFail().validate();
+        try {
+            boolean retVal = Validate.defineString("HelloWorld").testMinLength(8).throwValidationExceptionOnFail()
+                    .validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
 
     @Test
-    public void testNotNull()
-    {
+    public void testNotNullEmpty() {
 
-        try
-        {
-            boolean retVal = Validate.defineString("HelloWorld").testNotNull()
-                    .throwValidationExceptionOnFail().validate();
+        try {
+            boolean retVal = Validate.defineString("HelloWorld").testNotNullEmpty().throwValidationExceptionOnFail()
+                    .validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testEquals()
-    {
-		StringValidator stringValidator = Validate.defineString("HelloWorld");
-        try
-        {
-            stringValidator.testEquals("HelloWorld")
-                    .throwValidationExceptionOnFail();
-            System.err.println( stringValidator.toString() );
+    public void testNotNull() {
+
+        try {
+            boolean retVal = Validate.defineString("HelloWorld").testNotNull().throwValidationExceptionOnFail()
+                    .validate();
+
+            Assertions.assertTrue(retVal);
+        } catch (final ValidateException e) {
+            Assertions.fail(e.toString());
+        }
+
+    }
+
+    @Test
+    public void testEquals() {
+        StringValidator stringValidator = Validate.defineString("HelloWorld");
+        try {
+            stringValidator.testEquals("HelloWorld").throwValidationExceptionOnFail();
+            System.err.println(stringValidator.toString());
             boolean retVal = stringValidator.validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
     }
-    
-    @Test
-    public void testEqualsNoCase()
-    {
-		StringValidator stringValidator = Validate.defineString("HelloWorld");
-        try
-        {
 
-			stringValidator.testEqualsNoCase("hELLOwORLD")
-			        .throwValidationExceptionOnFail();
-			System.err.println( stringValidator.toString() );
-			boolean retVal = stringValidator.validate();
-            
+    @Test
+    public void testEqualsNoCase() {
+        StringValidator stringValidator = Validate.defineString("HelloWorld");
+        try {
+
+            stringValidator.testEqualsNoCase("hELLOwORLD").throwValidationExceptionOnFail();
+            System.err.println(stringValidator.toString());
+            boolean retVal = stringValidator.validate();
+
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    @Test
-    public void testMatch()
-    {
 
-        try
-        {
+    @Test
+    public void testMatch() {
+
+        try {
             boolean retVal = Validate.defineString("HelloWorld").testMatch("HelloWorld")
                     .throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    @Test
-    public void testMatch2()
-    {
 
-        try
-        {
-            boolean retVal = Validate.defineString("HelloWorld").testMatch("[A-Za-z]*")
-                    .throwValidationExceptionOnFail().validate();
+    @Test
+    public void testMatch2() {
+
+        try {
+            boolean retVal = Validate.defineString("HelloWorld").testMatch("[A-Za-z]*").throwValidationExceptionOnFail()
+                    .validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-        
+
 }

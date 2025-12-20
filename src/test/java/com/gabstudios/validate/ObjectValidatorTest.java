@@ -24,10 +24,8 @@ import org.junit.jupiter.api.*;
  * A test class for the ObjectValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class ObjectValidatorTest
-{
+public class ObjectValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -35,107 +33,81 @@ public class ObjectValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
+    public void testToString() {
         String x = "5";
-        try
-        {
+        try {
             String desc = Validate.defineObject(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
+    public void testGetValue() {
         String x = "5";
-        try
-        {
+        try {
             String retVal = (String) Validate.defineObject(x).getValue();
             Assertions.assertEquals(x, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
+
     @Test
-    public void testNoTest()
-    {
+    public void testNoTest() {
         String x = "5";
-        try
-        {
+        try {
             boolean retVal = Validate.defineObject(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testNoTest2()
-    {
+    public void testNoTest2() {
         String x = "5";
-        try
-        {
+        try {
             boolean retVal = Validate.defineObject(x).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
-    }     
-    
-    
-    @Test
-    public void testEquals()
-    {
+    }
 
-        try
-        {
+    @Test
+    public void testEquals() {
+
+        try {
             boolean retVal = Validate.defineObject("HelloWorld").testEquals("HelloWorld")
                     .throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
 
     @Test
-    public void testNotNull()
-    {
+    public void testNotNull() {
 
-        try
-        {
-            boolean retVal = Validate.defineObject("HelloWorld").testNotNull()
-                    .throwValidationExceptionOnFail().validate();
+        try {
+            boolean retVal = Validate.defineObject("HelloWorld").testNotNull().throwValidationExceptionOnFail()
+                    .validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-        
+
 }

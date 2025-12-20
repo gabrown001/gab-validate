@@ -25,7 +25,6 @@ import org.junit.jupiter.api.*;
  * A test class for the ObjectValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class ObjectValidatorNegativeTest {
     @BeforeEach
@@ -79,7 +78,6 @@ class ObjectValidatorTester extends ObjectValidator<Object> {
 
     /*
      * (non-Javadoc)
-     * 
      * @see com.gabstudios.validate.Validator#validate()
      */
     @Override

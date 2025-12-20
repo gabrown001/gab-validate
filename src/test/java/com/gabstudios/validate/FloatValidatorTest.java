@@ -20,15 +20,12 @@ package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
-
 /**
  * A test class for the FloatValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class FloatValidatorTest
-{
+public class FloatValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -36,131 +33,98 @@ public class FloatValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
-    	float x = 5.0f;
-        try
-        {
+    public void testToString() {
+        float x = 5.0f;
+        try {
             String desc = Validate.defineFloat(x).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
-    	float x = 5.0f;
-        try
-        {
+    public void testGetValue() {
+        float x = 5.0f;
+        try {
             float retVal = Validate.defineFloat(x).getValue();
             Assertions.assertEquals(x, retVal, 0);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
+
     @Test
-    public void testNoTest()
-    {
-    	float x = 5.0f;
-        try
-        {
+    public void testNoTest() {
+        float x = 5.0f;
+        try {
             boolean retVal = Validate.defineFloat(x).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testNoTest2()
-    {
-    	float x = 5.0f;
-        try
-        {
+    public void testNoTest2() {
+        float x = 5.0f;
+        try {
             boolean retVal = Validate.defineFloat(x).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
-    }     
-    
-    @Test
-    public void testMaxValue()
-    {
+    }
 
-        try
-        {
-        	float x = 5.0f;
+    @Test
+    public void testMaxValue() {
+
+        try {
+            float x = 5.0f;
             float max = 10.0f;
-            boolean retVal = Validate.defineFloat(x).testMaxValue(max)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineFloat(x).testMaxValue(max).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testMinLength()
-    {
-        
-        try
-        {
-        	float x = 5.0f;
+    public void testMinLength() {
+
+        try {
+            float x = 5.0f;
             float min = 4.0f;
-            boolean retVal = Validate.defineFloat(x).testMinValue(min)
-                    .throwValidationExceptionOnFail().validate();
+            boolean retVal = Validate.defineFloat(x).testMinValue(min).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
-    
+
     @Test
-    public void testEquals()
-    {
-        
-        try
-        {
-        	float x = 5.0f;
-        	float y = 5.0f;
-            boolean retVal = Validate.defineFloat(x).testEquals(y)
-                    .throwValidationExceptionOnFail().validate();
+    public void testEquals() {
+
+        try {
+            float x = 5.0f;
+            float y = 5.0f;
+            boolean retVal = Validate.defineFloat(x).testEquals(y).throwValidationExceptionOnFail().validate();
 
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
 
     @Test
@@ -170,9 +134,7 @@ public class FloatValidatorTest
             float x = 0f;
             boolean retVal = Validate.defineFloat(x).isZeroValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -185,9 +147,7 @@ public class FloatValidatorTest
             float x = 5f;
             boolean retVal = Validate.defineFloat(x).isPositiveValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
@@ -200,12 +160,10 @@ public class FloatValidatorTest
             float x = -5f;
             boolean retVal = Validate.defineFloat(x).isNegativeValue().throwValidationExceptionOnFail().validate();
             Assertions.assertTrue(retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
 }
