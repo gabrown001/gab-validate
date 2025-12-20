@@ -34,7 +34,7 @@ Required
 ---------
 This project requires the following: 
 
-    * Java 8, 11
+    * Java 17
     * Maven
 
 Usage
