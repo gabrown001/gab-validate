@@ -24,7 +24,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * A test class for the URIValidator. This class contains unit tests to validate the functionality of the URIValidator,
@@ -212,7 +215,7 @@ public class URIValidatorTest {
         String urlString = HTTP_LOCALHOST;
         try {
             URI uri = new URI(urlString);
-            boolean retVal = Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail()
+            Validate.defineURI(uri).allowProtocols("https").throwValidationExceptionOnFail()
                     .validate();
             // Corrected: boolean first, then message
             Assertions.fail("Expected protocol restriction to fail validation.");
@@ -246,7 +249,7 @@ public class URIValidatorTest {
 
         try {
             URI uri = new URI(urlString);
-            boolean retVal = Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
+            Validate.defineURI(uri).allowPorts(443).throwValidationExceptionOnFail().validate();
             Assertions.fail("Expected validation to fail for mismatched port.");
         } catch (final ValidateException e) {
             Assertions.assertTrue(true);

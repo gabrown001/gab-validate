@@ -172,7 +172,7 @@ public abstract class NumberValidator<C extends Number> extends ObjectValidator<
     protected boolean validateMinValue() {
         boolean isValid = true;
         if (this._isTestMinValue) {
-            isValid &= (((Comparable) this._value).compareTo((Comparable) this._minValue) >= 0);
+            isValid &= (((Comparable<C>) this._value).compareTo(this._minValue) >= 0);
             if (this._isValidationExceptionThrownOnFail && !isValid) {
                 ObjectValidator
                         .throwValidateException("The value must be greater than or equal to the min value (value = '"
@@ -186,7 +186,7 @@ public abstract class NumberValidator<C extends Number> extends ObjectValidator<
     protected boolean validateMaxValue() {
         boolean isValid = true;
         if (this._isTestMaxValue) {
-            isValid &= (((Comparable) this._value).compareTo((Comparable) this._maxValue) <= 0);
+            isValid &= (((Comparable<C>) this._value).compareTo(this._maxValue) <= 0);
             if (this._isValidationExceptionThrownOnFail && !isValid) {
                 ObjectValidator
                         .throwValidateException("The value must be less than or equal to the max value (value = '"
@@ -199,7 +199,7 @@ public abstract class NumberValidator<C extends Number> extends ObjectValidator<
     protected boolean validateZeroValue() {
         boolean isValid = true;
         if (this._isTestZeroValue) {
-            isValid &= (((Comparable) this._value).compareTo((Comparable) this._zeroValue) == 0);
+            isValid &= (((Comparable<C>) this._value).compareTo(this._zeroValue) == 0);
             // System.out.println( "Zero: " + isValid );
             if (this._isValidationExceptionThrownOnFail && !isValid) {
                 ObjectValidator
@@ -212,7 +212,7 @@ public abstract class NumberValidator<C extends Number> extends ObjectValidator<
     protected boolean validatePositiveValue() {
         boolean isValid = true;
         if (this._isTestPositiveValue) {
-            isValid &= (((Comparable) this._value).compareTo((Comparable) this._zeroValue) > 0);
+            isValid &= (((Comparable<C>) this._value).compareTo(this._zeroValue) > 0);
             // System.out.println( "Pos: " + isValid );
             if (this._isValidationExceptionThrownOnFail && !isValid) {
                 ObjectValidator.throwValidateException(
@@ -225,7 +225,7 @@ public abstract class NumberValidator<C extends Number> extends ObjectValidator<
     protected boolean validateNegativeValue() {
         boolean isValid = true;
         if (this._isTestNegativeValue) {
-            isValid &= (((Comparable) this._value).compareTo((Comparable) this._zeroValue) < 0);
+            isValid &= (((Comparable<C>) this._value).compareTo(this._zeroValue) < 0);
             // System.out.println( "Neg: " + isValid );
             if (this._isValidationExceptionThrownOnFail && !isValid) {
                 ObjectValidator.throwValidateException(
