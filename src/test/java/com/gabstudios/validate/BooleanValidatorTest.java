@@ -21,15 +21,10 @@ package com.gabstudios.validate;
 
 import org.junit.jupiter.api.*;
 
-
 /**
- *
- *
  * @author Gregory Brown (sysdevone)
- *
  */
-public class BooleanValidatorTest
-{
+public class BooleanValidatorTest {
     @BeforeEach
     public void setUp() {
     }
@@ -37,139 +32,104 @@ public class BooleanValidatorTest
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
-    public void testToString()
-    {
-        try
-        {
+    public void testToString() {
+        try {
             String desc = Validate.defineBoolean(true).toString();
             Assertions.assertTrue(desc != null && desc.length() != 0);
-        }
-        catch (final Exception e)
-        {
+        } catch (final Exception e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testGetValue()
-    {
-        try
-        {
+    public void testGetValue() {
+        try {
             boolean retValue = Validate.defineBoolean(true).getValue();
             Assertions.assertEquals(true, retValue);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    
-    @Test
-    public void testNoTest()
-    {
 
-        try
-        {
+    @Test
+    public void testNoTest() {
+
+        try {
             boolean retVal = Validate.defineBoolean(true).throwValidationExceptionOnFail().validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
-    @Test
-    public void testNoTest2()
-    {
 
-        try
-        {
+    @Test
+    public void testNoTest2() {
+
+        try {
             boolean retVal = Validate.defineBoolean(true).validate();
             Assertions.assertEquals(true, retVal);
-        }
-        catch (final ValidateException e)
-        {
+        } catch (final ValidateException e) {
             Assertions.fail(e.toString());
         }
 
     }
-    
+
     @Test
-    public void testTrue()
-    {
-        
-        try
-        {
+    public void testTrue() {
+
+        try {
             boolean retVal = Validate.defineBoolean(true).testTrue().throwValidationExceptionOnFail().validate();
-            
+
             Assertions.assertTrue(retVal);
-        }
-        catch (final IllegalArgumentException e)
-        {
+        } catch (final IllegalArgumentException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
+
     @Test
-    public void testFalse()
-    {
-        
-        try
-        {
-            boolean retVal = Validate.defineBoolean(false).testFalse().throwValidationExceptionOnFail()
+    public void testFalse() {
+
+        try {
+            boolean retVal = Validate.defineBoolean(false).testFalse().throwValidationExceptionOnFail().validate();
+
+            Assertions.assertTrue(retVal);
+        } catch (final IllegalArgumentException e) {
+            Assertions.fail(e.toString());
+        }
+
+    }
+
+    @Test
+    public void testEquals() {
+
+        try {
+            boolean retVal = Validate.defineBoolean(true).testEquals(true).throwValidationExceptionOnFail().validate();
+
+            Assertions.assertTrue(retVal);
+        } catch (final IllegalArgumentException e) {
+            Assertions.fail(e.toString());
+        }
+
+    }
+
+    @Test
+    public void testEquals2() {
+
+        try {
+            boolean retVal = Validate.defineBoolean(false).testEquals(false).throwValidationExceptionOnFail()
                     .validate();
-            
+
             Assertions.assertTrue(retVal);
-        }
-        catch (final IllegalArgumentException e)
-        {
+        } catch (final IllegalArgumentException e) {
             Assertions.fail(e.toString());
         }
-        
+
     }
-    
-    @Test
-    public void testEquals()
-    {
-        
-        try
-        {
-            boolean retVal = Validate.defineBoolean(true).testEquals(true).throwValidationExceptionOnFail()
-                    .validate();
-            
-            Assertions.assertTrue(retVal);
-        }
-        catch (final IllegalArgumentException e)
-        {
-            Assertions.fail(e.toString());
-        }
-        
-    }
-    
-    @Test
-    public void testEquals2()
-    {
-        
-        try
-        {
-            boolean retVal = Validate.defineBoolean(false).testEquals(false)
-                    .throwValidationExceptionOnFail().validate();
-            
-            Assertions.assertTrue(retVal);
-        }
-        catch (final IllegalArgumentException e)
-        {
-            Assertions.fail(e.toString());
-        }
-        
-    }
-    
+
 }

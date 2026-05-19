@@ -17,51 +17,39 @@
  *****************************************************************************************
  */
 
-
 package com.gabstudios.validate;
 
 /**
- * This is a double validator. After this class is created, call the testXXXX()
- * methods to perform tests when the validate() method is called.
- * 
- *      Validate.defineDouble(double).testNotNull().validate();
+ * This is a double validator. After this class is created, call the testXXXX() methods to perform tests when the
+ * validate() method is called. Validate.defineDouble(double).testNotNull().validate(); If the
+ * throwValidationExceptionOnFail() method has been called and if the validate fails then a ValidateException will be
+ * thrown. Validate.defineDouble(double).testEquals(char) .throwValidationExceptionOnFail().validate(); If no test
+ * method is called, validate() returns a TRUE.
  *
- * If the throwValidationExceptionOnFail() method has been called and if the validate fails
- * then a ValidateException will be thrown.
- * 
- *      Validate.defineDouble(double).testEquals(char)
- *          .throwValidationExceptionOnFail().validate();
- *
- * If no test method is called, validate() returns a TRUE.
- *
- * @author Gregory Brown (sysdevone)
- *
+ * @author G Brown
  */
-public final class DoubleValidator extends NumberValidator<Double>
-{
-       
+public final class DoubleValidator extends NumberValidator<Double> {
+
     /**
      * Protected constructor. Use Validate static method to create validator.
      *
      * @param value
      *            The value that will be validated.
      */
-    protected DoubleValidator(final double value)
-    {
+    protected DoubleValidator(final double value) {
         super(value, Double.MIN_VALUE, Double.MAX_VALUE, Double.valueOf(0));
     }
 
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.format(
+                "DoubleValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
+                _isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
+                _equalsValue, _isTestEquals, _isTestNotNull, _value);
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return String.format(
-				"DoubleValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
-				_isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
-				_equalsValue, _isTestEquals, _isTestNotNull, _value);
-	}
-    
-    
 }

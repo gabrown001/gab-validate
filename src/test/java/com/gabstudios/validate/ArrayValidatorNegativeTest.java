@@ -24,7 +24,6 @@ import org.junit.jupiter.api.*;
  * A test class for the ArrayValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class ArrayValidatorNegativeTest {
     @BeforeEach
@@ -47,7 +46,8 @@ public class ArrayValidatorNegativeTest {
     @Test
     public void testMaxLengthLessThanZero() {
         String[] strArray1 = { "Hello", "World", "is", "awesome" };
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Validate.defineArray(strArray1).testMaxLength(-11));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validate.defineArray(strArray1).testMaxLength(-11));
     }
 
     public void testMaxLengthGreaterThanMin() {
@@ -68,7 +68,8 @@ public class ArrayValidatorNegativeTest {
     @Test
     public void testMinLength2() {
         String[] strArray1 = { "Hello", "World", "is", "awesome" };
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Validate.defineArray(strArray1).testMinLength(-5));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validate.defineArray(strArray1).testMinLength(-5));
 
     }
 
@@ -83,7 +84,8 @@ public class ArrayValidatorNegativeTest {
     @Test
     public void testMinLengthLessThanZero() {
         String[] strArray1 = { "Hello", "World", "is", "awesome" };
-        Assertions.assertThrows(IllegalArgumentException.class, () -> Validate.defineArray(strArray1).testMinLength(-10));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> Validate.defineArray(strArray1).testMinLength(-10));
 
     }
 

@@ -25,7 +25,6 @@ import org.junit.jupiter.api.*;
  * A negative test class for the CharValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class CharValidatorNegativeTest {
     @BeforeEach

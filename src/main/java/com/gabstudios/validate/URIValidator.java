@@ -17,7 +17,6 @@
  *****************************************************************************************
  */
 
-
 package com.gabstudios.validate;
 
 import java.net.InetAddress;
@@ -30,33 +29,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * This is a URI validator. After this class is created, call the testXXXX()
- * methods to perform tests when the validate() method is called.
- * 
- * Validate.defineURI(URI).testMatchAllowDomain('my.domain.com').validate();
- *
- * If the throwValidationExceptionOnFail() method has been called and if the
- * validate fails then a ValidateException will be thrown.
- * 
- * Validate.defineURI(URI).testMatchAllowDomain('my.domain.com')
- * .throwValidationExceptionOnFail().validate();
- *
+ * This is a URI validator. After this class is created, call the testXXXX() methods to perform tests when the
+ * validate() method is called. Validate.defineURI(URI).testMatchAllowDomain('my.domain.com').validate(); If the
+ * throwValidationExceptionOnFail() method has been called and if the validate fails then a ValidateException will be
+ * thrown. Validate.defineURI(URI).testMatchAllowDomain('my.domain.com') .throwValidationExceptionOnFail().validate();
  * If no test method is called, validate() returns a TRUE.
  *
- * @author Gregory Brown (sysdevone)
- *
+ * @author G Brown
  */
 public final class URIValidator extends StringValidator {
 
     /*
-     * A flag indicating if an "Match Allow List" test will be performed when the
-     * validate() method is called.
+     * A flag indicating if an "Match Allow List" test will be performed when the validate() method is called.
      */
     private boolean _isTestMatchAllowList = false;
 
     /*
-     * A flag indicating if an "Match Deny List" test will be performed when the
-     * validate() method is called.
+     * A flag indicating if an "Match Deny List" test will be performed when the validate() method is called.
      */
     private boolean _isTestMatchDenyList = false;
 
@@ -68,11 +57,11 @@ public final class URIValidator extends StringValidator {
     private final URI _uri;
     private InetAddress _address;
 
-
     /**
      * Protected constructor for creating a URIValidator instance.
-     * 
-     * @param value the URI to validate
+     *
+     * @param value
+     *            the URI to validate
      */
     protected URIValidator(final URI value) {
         super(value.toString());
@@ -80,28 +69,39 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Adds a domain to the allow list for validation. The domain string is parsed into a URI and resolved to an IP address.
-     * Only one of allow or deny list can be set at a time.
-     * 
-     * @param domain the domain string to allow (e.g., "example.com")
+     * Adds a domain to the allow list for validation. The domain string is parsed into a URI and resolved to an IP
+     * address. Only one of allow or deny list can be set at a time.
+     *
+     * @param domain
+     *            the domain string to allow (e.g., "example.com")
+     *
      * @return this validator for chaining
-     * @throws MalformedURLException if the domain string cannot be parsed as a URI
-     * @throws UnknownHostException if the domain cannot be resolved to an IP address
-     * @throws URISyntaxException if the domain string violates URI syntax
+     *
+     * @throws MalformedURLException
+     *             if the domain string cannot be parsed as a URI
+     * @throws UnknownHostException
+     *             if the domain cannot be resolved to an IP address
+     * @throws URISyntaxException
+     *             if the domain string violates URI syntax
      */
-    public URIValidator testMatchAllowDomain(final String domain) throws MalformedURLException, UnknownHostException, URISyntaxException {
+    public URIValidator testMatchAllowDomain(final String domain)
+            throws MalformedURLException, UnknownHostException, URISyntaxException {
         final URI uri = new URI(domain);
         testMatchAllowDomain(uri);
         return (this);
     }
 
     /**
-     * Adds a URI's host to the allow list for validation. The host is resolved to an IP address.
-     * Only one of allow or deny list can be set at a time.
-     * 
-     * @param uri the URI whose host to allow
+     * Adds a URI's host to the allow list for validation. The host is resolved to an IP address. Only one of allow or
+     * deny list can be set at a time.
+     *
+     * @param uri
+     *            the URI whose host to allow
+     *
      * @return this validator for chaining
-     * @throws UnknownHostException if the URI's host cannot be resolved to an IP address
+     *
+     * @throws UnknownHostException
+     *             if the URI's host cannot be resolved to an IP address
      */
     public URIValidator testMatchAllowDomain(final URI uri) throws UnknownHostException {
         // FIXME: need to convert to IP address for deny name
@@ -117,28 +117,39 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Adds a domain to the deny list for validation. The domain string is parsed into a URI and resolved to an IP address.
-     * Only one of allow or deny list can be set at a time.
-     * 
-     * @param domain the domain string to deny (e.g., "example.com")
+     * Adds a domain to the deny list for validation. The domain string is parsed into a URI and resolved to an IP
+     * address. Only one of allow or deny list can be set at a time.
+     *
+     * @param domain
+     *            the domain string to deny (e.g., "example.com")
+     *
      * @return this validator for chaining
-     * @throws MalformedURLException if the domain string cannot be parsed as a URI
-     * @throws UnknownHostException if the domain cannot be resolved to an IP address
-     * @throws URISyntaxException if the domain string violates URI syntax
+     *
+     * @throws MalformedURLException
+     *             if the domain string cannot be parsed as a URI
+     * @throws UnknownHostException
+     *             if the domain cannot be resolved to an IP address
+     * @throws URISyntaxException
+     *             if the domain string violates URI syntax
      */
-    public URIValidator testMatchDenyDomain(final String domain) throws MalformedURLException, UnknownHostException, URISyntaxException {
+    public URIValidator testMatchDenyDomain(final String domain)
+            throws MalformedURLException, UnknownHostException, URISyntaxException {
         final URI uri = new URI(domain);
         testMatchDenyDomain(uri);
         return (this);
     }
 
     /**
-     * Adds a URI's host to the deny list for validation. The host is resolved to an IP address.
-     * Only one of allow or deny list can be set at a time.
-     * 
-     * @param uri the URI whose host to deny
+     * Adds a URI's host to the deny list for validation. The host is resolved to an IP address. Only one of allow or
+     * deny list can be set at a time.
+     *
+     * @param uri
+     *            the URI whose host to deny
+     *
      * @return this validator for chaining
-     * @throws UnknownHostException if the URI's host cannot be resolved to an IP address
+     *
+     * @throws UnknownHostException
+     *             if the URI's host cannot be resolved to an IP address
      */
     public URIValidator testMatchDenyDomain(final URI uri) throws UnknownHostException {
         if (this._isTestMatchAllowList) {
@@ -157,6 +168,7 @@ public final class URIValidator extends StringValidator {
      *
      * @param protocols
      *            Protocol names - e.g. "https".
+     *
      * @return This validator for chaining.
      */
     public URIValidator allowProtocols(final String... protocols) {
@@ -175,6 +187,7 @@ public final class URIValidator extends StringValidator {
      *
      * @param ports
      *            Port numbers (0-65535).
+     *
      * @return This validator for chaining.
      */
     public URIValidator allowPorts(final Integer... ports) {
@@ -196,9 +209,9 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Performs the validation based on the configured tests (allow/deny lists, protocols, ports, etc.).
-     * Calls the parent validate() first, then checks address resolution, allow list, protocols, ports, and deny list.
-     * 
+     * Performs the validation based on the configured tests (allow/deny lists, protocols, ports, etc.). Calls the
+     * parent validate() first, then checks address resolution, allow list, protocols, ports, and deny list.
+     *
      * @return true if all validations pass, false otherwise
      */
     @Override
@@ -236,9 +249,8 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Validates that the URI's host can be resolved to an IP address.
-     * Sets the _address field if successful.
-     * 
+     * Validates that the URI's host can be resolved to an IP address. Sets the _address field if successful.
+     *
      * @return true if the host resolves, false if UnknownHostException occurs
      */
     protected boolean validateAddress() {
@@ -249,23 +261,22 @@ public final class URIValidator extends StringValidator {
         } catch (UnknownHostException ex) {
             isValid = false;
             if (this._isValidationExceptionThrownOnFail && !isValid) {
-                ObjectValidator.throwValidateException(
-                        "The address (value = " + this._address + ") is an unknown host (value = '" + this._uri.getHost() + "').");
+                ObjectValidator.throwValidateException("The address (value = " + this._address
+                        + ") is an unknown host (value = '" + this._uri.getHost() + "').");
             }
         }
         return (isValid);
     }
 
     /**
-     * Validates the URI's host against the allow list.
-     * If the allow list is empty, allows all; otherwise, checks if the resolved address matches any in the list.
-     * 
+     * Validates the URI's host against the allow list. If the allow list is empty, allows all; otherwise, checks if the
+     * resolved address matches any in the list.
+     *
      * @return true if validation passes, false otherwise
      */
     protected boolean validateAllowList() {
         boolean isValid = false;
-        if( !this._allowList.isEmpty() )
-        {
+        if (!this._allowList.isEmpty()) {
             for (final InetAddress address : this._allowList) {
                 if (this._address.equals(address)) {
                     isValid = true;
@@ -274,12 +285,10 @@ public final class URIValidator extends StringValidator {
             }
 
             if (this._isValidationExceptionThrownOnFail && !isValid) {
-                ObjectValidator.throwValidateException(
-                        "The address does (value = " + this._address + "') not match the entries in the allow list (value = '" + this._allowList + "').");
+                ObjectValidator.throwValidateException("The address does (value = " + this._address
+                        + "') not match the entries in the allow list (value = '" + this._allowList + "').");
             }
-        }
-        else
-        {
+        } else {
             // if the allow list is empty, then we allow all protocols
             isValid = true;
         }
@@ -288,16 +297,15 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Validates the URI's host against the deny list.
-     * If the deny list is empty, allows all; otherwise, checks if the resolved address is not in the list.
-     * 
+     * Validates the URI's host against the deny list. If the deny list is empty, allows all; otherwise, checks if the
+     * resolved address is not in the list.
+     *
      * @return true if validation passes, false otherwise
      */
     protected boolean validateDenyList() {
 
         boolean isValid = true;
-        if( !this._denyList.isEmpty() )
-        {
+        if (!this._denyList.isEmpty()) {
             for (final InetAddress address : this._denyList) {
                 if (this._address.equals(address)) {
                     isValid = false;
@@ -306,12 +314,10 @@ public final class URIValidator extends StringValidator {
             }
 
             if (this._isValidationExceptionThrownOnFail && !isValid) {
-                ObjectValidator.throwValidateException(
-                        "The address (value = " + this._address + ") is present in the deny list (value = '" + this._denyList + "').");
+                ObjectValidator.throwValidateException("The address (value = " + this._address
+                        + ") is present in the deny list (value = '" + this._denyList + "').");
             }
-        }
-        else
-        {
+        } else {
             // if the allow list is empty, then we allow all protocols
             isValid = true;
         }
@@ -319,15 +325,14 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Validates the URI's scheme against the allowed protocols.
-     * If the allowed protocols set is empty, allows all; otherwise, checks if the scheme matches any allowed protocol (case insensitive).
-     * 
+     * Validates the URI's scheme against the allowed protocols. If the allowed protocols set is empty, allows all;
+     * otherwise, checks if the scheme matches any allowed protocol (case insensitive).
+     *
      * @return true if validation passes, false otherwise
      */
     protected boolean validateAllowedProtocols() {
         boolean isValid = false;
-        if( !this._allowedProtocols.isEmpty() )
-        {
+        if (!this._allowedProtocols.isEmpty()) {
             final String scheme = (this._uri.getScheme() != null) ? this._uri.getScheme().toLowerCase() : "";
             for (final String allowedProtocol : this._allowedProtocols) {
                 if (scheme.equals(allowedProtocol)) {
@@ -336,12 +341,11 @@ public final class URIValidator extends StringValidator {
                 }
             }
             if (this._isValidationExceptionThrownOnFail && !isValid) {
-                ObjectValidator.throwValidateException(
-                        "The url protocol (value = '" + scheme + "') does not match the entries in the allow list (value = '" + this._allowedProtocols + "').");
+                ObjectValidator.throwValidateException("The url protocol (value = '" + scheme
+                        + "') does not match the entries in the allow list (value = '" + this._allowedProtocols
+                        + "').");
             }
-        }
-        else
-        {
+        } else {
             // if the allow list is empty, then we allow all protocols
             isValid = true;
         }
@@ -351,16 +355,14 @@ public final class URIValidator extends StringValidator {
     }
 
     /**
-     * Validates the URI's port against the allowed ports.
-     * Resolves the port if not specified (uses default for scheme).
+     * Validates the URI's port against the allowed ports. Resolves the port if not specified (uses default for scheme).
      * If the allowed ports set is empty, allows all; otherwise, checks if the port matches any allowed port.
-     * 
+     *
      * @return true if validation passes, false otherwise
      */
     protected boolean validateAllowedPorts() {
         boolean isValid = false;
-        if( !this._allowedPorts.isEmpty() )
-        {
+        if (!this._allowedPorts.isEmpty()) {
             final int port = resolvePort();
             for (final Integer allowedPort : this._allowedPorts) {
                 if (port == allowedPort) {
@@ -369,22 +371,21 @@ public final class URIValidator extends StringValidator {
                 }
             }
             if (this._isValidationExceptionThrownOnFail && !isValid) {
-                ObjectValidator.throwValidateException(
-                        "The url port (value = '" + port + "') does not match the entries in the allow list (value = '" + this._allowedPorts + "').");
+                ObjectValidator.throwValidateException("The url port (value = '" + port
+                        + "') does not match the entries in the allow list (value = '" + this._allowedPorts + "').");
             }
-        }
-        else
-        {
+        } else {
             // if the allow list is empty, then we allow all protocols
             isValid = true;
         }
-            // System.out.println("validate protocol result: " + isValid);
+        // System.out.println("validate protocol result: " + isValid);
         return (isValid);
     }
 
     /**
-     * Resolves the port for the URI. If the URI specifies a port, uses it; otherwise, gets the default port for the scheme.
-     * 
+     * Resolves the port for the URI. If the URI specifies a port, uses it; otherwise, gets the default port for the
+     * scheme.
+     *
      * @return the resolved port number, or -1 if resolution fails
      */
     private int resolvePort() {
@@ -394,7 +395,8 @@ public final class URIValidator extends StringValidator {
                 port = this._uri.toURL().getDefaultPort();
             } catch (MalformedURLException e) {
                 if (this._isValidationExceptionThrownOnFail) {
-                    ObjectValidator.throwValidateException("Unable to resolve the URI port (value = '" + this._uri + "').");
+                    ObjectValidator
+                            .throwValidateException("Unable to resolve the URI port (value = '" + this._uri + "').");
                 }
             }
         }
@@ -403,7 +405,7 @@ public final class URIValidator extends StringValidator {
 
     /**
      * Returns a string representation of this validator, including address, flags, and lists.
-     * 
+     *
      * @return a string describing the validator's state
      */
     @Override

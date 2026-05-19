@@ -25,7 +25,6 @@ import org.junit.jupiter.api.*;
  * A test class for the FloatValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class FloatValidatorNegativeTest {
     @BeforeEach

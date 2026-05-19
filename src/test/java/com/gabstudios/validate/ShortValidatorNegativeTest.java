@@ -25,7 +25,6 @@ import org.junit.jupiter.api.*;
  * A test class for the ShortValidator
  *
  * @author Gregory Brown (sysdevone)
- *
  */
 public class ShortValidatorNegativeTest {
     @BeforeEach

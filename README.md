@@ -34,7 +34,7 @@ Required
 ---------
 This project requires the following: 
 
-    * Java 8, 11
+    * Java 17
     * Maven
 
 Usage
@@ -93,7 +93,7 @@ Check the project [wiki].
 
 Copyright
 -------
-[Copyright 2015 Gregory Brown]
+[Copyright 2015-2025 Gregory Brown]
 
 
 License
@@ -106,7 +106,7 @@ Feedback
 Comments and feedback are greatly appreciated!!!
 
 
-[Copyright 2015 Gregory Brown]: https://github.com/gab-studios/gab-validate/tree/master/COPYRIGHT.txt
+[Copyright 2015-2025 Gregory Brown]: https://github.com/gab-studios/gab-validate/tree/master/COPYRIGHT.txt
 [Apache v2.0 License]: https://github.com/gab-studios/gab-validate/tree/master/LICENSE.txt
 [wiki]: https://github.com/gab-studios/gab-validate/wiki
 [examples]: https://github.com/gab-studios/gab-validate/wiki/Examples

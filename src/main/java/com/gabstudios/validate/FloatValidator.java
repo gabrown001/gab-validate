@@ -17,51 +17,39 @@
  *****************************************************************************************
  */
 
- 
 package com.gabstudios.validate;
 
 /**
- * This is a float validator. After this class is created, call the testXXXX()
- * methods to perform tests when the validate() method is called.
- * 
- *      Validate.defineFloat(float).testNotNull().validate();
+ * This is a float validator. After this class is created, call the testXXXX() methods to perform tests when the
+ * validate() method is called. Validate.defineFloat(float).testNotNull().validate(); If the
+ * throwValidationExceptionOnFail() method has been called and if the validate fails then a ValidateException will be
+ * thrown. Validate.defineFloat(float).testEquals(float) .throwValidationExceptionOnFail().validate(); If no test method
+ * is called, validate() returns a TRUE.
  *
- * If the throwValidationExceptionOnFail() method has been called and if the validate fails
- * then a ValidateException will be thrown.
- * 
- *      Validate.defineFloat(float).testEquals(float)
- *          .throwValidationExceptionOnFail().validate();
- *
- * If no test method is called, validate() returns a TRUE.
- *
- * @author Gregory Brown (sysdevone)
- *
+ * @author G Brown
  */
-public final class FloatValidator extends NumberValidator<Float>
-{
-       
+public final class FloatValidator extends NumberValidator<Float> {
+
     /**
      * Protected constructor. Use Validate static method to create validator.
      *
      * @param value
      *            The value that will be validated.
      */
-    protected FloatValidator(final float value)
-    {
-        super( value, Float.MIN_VALUE, Float.MAX_VALUE, Float.valueOf(0));
+    protected FloatValidator(final float value) {
+        super(value, Float.MIN_VALUE, Float.MAX_VALUE, Float.valueOf(0));
     }
 
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.format(
+                "FloatValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
+                _isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
+                _equalsValue, _isTestEquals, _isTestNotNull, _value);
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return String.format(
-				"FloatValidator [_isTestMaxValue=%s, _isTestMinValue=%s, _maxValue=%s, _minValue=%s, _isValidationExceptionThrownOnFail=%s, _equalsValue=%s, _isTestEquals=%s, _isTestNotNull=%s, _value=%s]",
-				_isTestMaxValue, _isTestMinValue, _maxValue, _minValue, _isValidationExceptionThrownOnFail,
-				_equalsValue, _isTestEquals, _isTestNotNull, _value);
-	}
-    
-    
 }
